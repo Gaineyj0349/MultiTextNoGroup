@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center">
+
+   <EditText
+       android:id="@+id/etindialogcreategroup"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:hint="Group Name"
+       android:textAlignment="center"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/saveandcreatenewButton"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SAVE AND\nCREATE NEW" />
+
+        <Button
+            android:id="@+id/saveandexitButton"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SAVE AND\nEXIT TO MAIN" />
+    </LinearLayout>
+
+</LinearLayout>

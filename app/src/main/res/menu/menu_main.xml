@@ -1,0 +1,14 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.bitwis3.gaine.multitextnogroup.MainActivity" >
+    <item android:id="@+id/manage_groups"
+        android:title="Manage Groups"
+        android:orderInCategory="100"
+        app:showAsAction="never" />
+    <item android:id="@+id/other_apps"
+        android:title="GainWise Apps"
+        android:orderInCategory="100"
+        app:showAsAction="never" />
+
+</menu>

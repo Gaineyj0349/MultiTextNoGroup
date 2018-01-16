@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.bitwis3.gaine.multitextnogroup.CreateContactList"
+    tools:showIn="@layout/activity_create_contact_list">
+
+
+    <android.support.design.widget.TabLayout
+
+        android:id="@+id/tabLayoutincreate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:tabMode="fixed"
+        android:layout_alignParentTop="true"
+        android:fontFamily="sans-serif-condensed"
+        />
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/LL1increate"
+        android:layout_below="@id/tabLayoutincreate"
+
+        android:gravity="center_horizontal">
+        <View
+            android:background="@color/colorPrimaryDark"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"/>
+        <Spinner
+
+            android:id="@+id/spinnerincreate"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:minWidth="150dp"
+            />
+        <View
+            android:background="@color/colorPrimaryDark"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"/>
+    </LinearLayout>
+    <ListView
+    android:layout_below="@id/LL1increate"
+        android:dividerHeight="2dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="2dp"
+        android:paddingRight="2dp"
+        android:paddingTop="2dp"
+        android:paddingBottom="2dp"
+        android:id="@+id/listviewincreate"
+
+
+        />
+    <ListView
+        android:layout_below="@id/LL1increate"
+        android:dividerHeight="2dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="2dp"
+        android:paddingRight="2dp"
+        android:paddingTop="2dp"
+        android:paddingBottom="2dp"
+        android:id="@+id/listviewincreate2"
+
+
+        />
+
+</RelativeLayout>

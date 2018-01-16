@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center_horizontal">
+
+
+    <TextView
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textAlignment="center"
+        android:text="To create groups for quick \nmulti-texting, go to the Group Manager \nby clicking the 3 vertical dots \n
+        at the top right of the screen.\n(Complete editing of groups can \nbe done there also.)"/>
+
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Do not show this again"
+        android:id="@+id/checkbox"/>
+
+    <Button
+        android:id="@+id/buttondialog"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="OK" />
+
+</LinearLayout>
