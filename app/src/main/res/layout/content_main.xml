@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/activity_main"
+
     tools:context="com.bitwis3.gaine.multitextnogroup.MainActivity">
 
     <android.support.design.widget.TabLayout
@@ -14,8 +15,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:tabMode="fixed"
+
+        app:tabSelectedTextColor="@color/colorAccent"
         android:layout_alignParentTop="true"
-        android:fontFamily="sans-serif-condensed"
+        android:fontFamily=""
         />
     <LinearLayout
         android:orientation="vertical"
@@ -58,6 +61,7 @@ android:paddingBottom="2dp"
             android:layout_alignParentBottom="true"
 
             />
+
 
 
 

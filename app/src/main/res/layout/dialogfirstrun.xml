@@ -6,16 +6,17 @@
     android:gravity="center_horizontal">
 
 
-    <TextView
+    <com.bitwis3.gaine.multitextnogroup.CustomTextView
         android:paddingLeft="4dp"
         android:paddingRight="4dp"
+        android:textSize="20sp"
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:textAlignment="center"
-        android:text="To create groups for quick \nmulti-texting, go to the Group Manager \nby clicking the 3 vertical dots \n
-        at the top right of the screen.\n(Complete editing of groups can \nbe done there also.)"/>
+        android:text="To create groups for quick \nmulti-texting, go to the last\noption on the home screen.\n
+       \n(Complete editing of groups can \nbe done there also.)\n\n\n"/>
 
 
     <CheckBox

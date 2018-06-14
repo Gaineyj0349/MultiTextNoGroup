@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".Main3Activity"
+    tools:showIn="@layout/activity_main3"
+    android:gravity="center">
+
+<com.bitwis3.gaine.multitextnogroup.CustomTextView
+
+    android:id="@+id/timedtv"
+    android:textAlignment="center"
+    android:textSize="17sp"
+    android:singleLine="false"
+    android:text="Please Select the Date and Time you wish this message to send"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" />
+    <DatePicker
+android:layout_below="@id/timedtv"
+        android:layout_gravity="center"
+        android:id="@+id/datePicker"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:calendarViewShown="false"
+        android:datePickerMode="spinner"
+
+        />
+
+    <TimePicker
+        android:layout_below="@id/datePicker"
+        android:id="@+id/timePicker"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:timePickerMode="spinner"/>
+
+</RelativeLayout>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/fab_margin"
+    tools:context=".Credits">
+
+
+    <com.bitwis3.gaine.multitextnogroup.CustomTextView
+        android:onClick="APACHE"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/credit"/>
+
+    <com.bitwis3.gaine.multitextnogroup.CustomTextView
+        android:onClick="PRIVACY"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        android:textAlignment="center"
+        android:textSize="25sp"
+        android:id="@+id/privacy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/privacy"/>
+
+
+<com.bitwis3.gaine.multitextnogroup.CustomTextView
+    android:onClick="APACHE"
+    android:paddingTop="15dp"
+    android:paddingBottom="15dp"
+    android:textAlignment="center"
+    android:textSize="25sp"
+    android:id="@+id/apacheLicense"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="@string/apache"/>
+
+    <com.bitwis3.gaine.multitextnogroup.CustomTextView
+        android:onClick="MIT"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        android:textAlignment="center"
+        android:textSize="25sp"
+        android:id="@+id/mitLicense"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/mit"/>
+
+
+
+
+</LinearLayout>

@@ -2,11 +2,14 @@ package com.bitwis3.gaine.multitextnogroup;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.arch.persistence.room.Room;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -18,6 +21,7 @@ import android.view.ContextMenu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -29,6 +33,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import spencerstudios.com.bungeelib.Bungee;
+import spencerstudios.com.fab_toast.FabToast;
 
 public class CreateContactList extends AppCompatActivity {
 
@@ -36,14 +44,16 @@ public class CreateContactList extends AppCompatActivity {
     ListView lv2;
     TabLayout tablayout;
     LinearLayout LL1;
-    DBHelper helper = null;
-    SQLiteDatabase db = null;
+//    DBHelper helper = null;
+//    SQLiteDatabase db = null;
     ContentValues values;
     Cursor cursor;
     ArrayAdapter<String> adapterForSpinner;
     Spinner spinner;
     String inSpinnerNow;
     private int selectedTabint = 1;
+
+    DBRoom db;
 
 
 
@@ -53,10 +63,21 @@ public class CreateContactList extends AppCompatActivity {
         setContentView(R.layout.activity_create_contact_list);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        values = new ContentValues();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        helper = new DBHelper(this, "_contactDB", null, 1);
-        db = helper.getWritableDatabase();
+            getSupportActionBar().setTitle("Group Management");
+            getSupportActionBar().setBackgroundDrawable(getResources().getDrawable(R.drawable.gradient4));
+
+
+        values = new ContentValues();
+        MainActivity.returning = true;
+//        helper = new DBHelper(this, "_contactDB", null, 1);
+//        db = helper.getWritableDatabase();
+        db =  Room.databaseBuilder(getApplicationContext(),
+                DBRoom.class , "_database_multi_master")
+                 .fallbackToDestructiveMigration()
+                .allowMainThreadQueries().build();
+
         spinner = (Spinner) findViewById(R.id.spinnerincreate);
 
         lv = (ListView) findViewById(R.id.listviewincreate);
@@ -72,6 +93,10 @@ public class CreateContactList extends AppCompatActivity {
             public void onClick(final View view9) {
 
                 if (CustomListAdapter.getArrayList().size() > 0) {
+
+                    SharedPreferences.Editor prefs = getSharedPreferences("AUTO_PREF", Context.MODE_PRIVATE).edit();
+                    prefs.putBoolean("showAd", true);
+                    prefs.apply();
 
                     final Dialog dialog = new Dialog(CreateContactList.this);
                     View mView = getLayoutInflater().inflate(R.layout.dialog_for_saving_group, null);
@@ -97,8 +122,8 @@ public class CreateContactList extends AppCompatActivity {
                                 fillListView();
                                 CustomListAdapter.setArrayList();
                             } else {
-                                Toast.makeText(CreateContactList.this, "Group name can not be blank, or contain " +
-                                        "an apostrophe!", Toast.LENGTH_LONG).show();
+                                FabToast.makeText(CreateContactList.this, "Group name can not be blank, or contain " +
+                                        "an apostrophe!", Toast.LENGTH_LONG, FabToast.WARNING, FabToast.POSITION_DEFAULT).show();
                             }
 
 
@@ -117,8 +142,8 @@ public class CreateContactList extends AppCompatActivity {
 
                                 CreateContactList.this.finish();
                             } else {
-                                Toast.makeText(CreateContactList.this, "Group name can not be blank, or contain " +
-                                        "an apostrophe!", Toast.LENGTH_LONG).show();
+                               FabToast.makeText(CreateContactList.this, "Group name can not be blank."
+                                       , Toast.LENGTH_LONG, FabToast.WARNING, FabToast.POSITION_DEFAULT).show();
                             }
 
 
@@ -130,14 +155,17 @@ public class CreateContactList extends AppCompatActivity {
                     dialog.show();
 
                 } else {
-                    Toast.makeText(CreateContactList.this, "No Contacts have been selected!", Toast.LENGTH_LONG).show();
+                    FabToast.makeText(CreateContactList.this, "No Contacts have been selected!", Toast.LENGTH_LONG
+                    , FabToast.WARNING, FabToast.POSITION_DEFAULT).show();
                 }
             }
         });
         fab2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View view9) {
-
+                SharedPreferences.Editor prefs = getSharedPreferences("AUTO_PREF", Context.MODE_PRIVATE).edit();
+                prefs.putBoolean("showAd", true);
+                prefs.apply();
 
                 inSpinnerNow = getCurrentInSpinner();
                 if (inSpinnerNow.length()>0) {
@@ -159,8 +187,8 @@ public class CreateContactList extends AppCompatActivity {
                                         case DialogInterface.BUTTON_POSITIVE:
 
 
-                                            Toast.makeText(getApplicationContext(), "Removed!",
-                                                    Toast.LENGTH_SHORT).show();
+                                            FabToast.makeText(getApplicationContext(), "Removed!",
+                                                    Toast.LENGTH_SHORT, FabToast.SUCCESS, FabToast.POSITION_DEFAULT).show();
                                             dialog99.dismiss();
 
                                             Snackbar.make(view9, "Group " + getCurrentInSpinner() + " Deleted!", Snackbar.LENGTH_LONG)
@@ -205,7 +233,8 @@ public class CreateContactList extends AppCompatActivity {
                     dialog99.setContentView(mView);
                     dialog99.show();
                 }else{
-                    Toast.makeText(CreateContactList.this, "Nothing to edit, you must create group first!", Toast.LENGTH_LONG).show();
+                    FabToast.makeText(CreateContactList.this, "Nothing to edit, you must create group first!", Toast.LENGTH_LONG
+                    , FabToast.INFORMATION, FabToast.POSITION_DEFAULT).show();
                 }
             }
         });
@@ -214,7 +243,7 @@ public class CreateContactList extends AppCompatActivity {
         tablayout = (TabLayout) findViewById(R.id.tabLayoutincreate);
         tablayout.addTab(tablayout.newTab().setText("Create Group"));
         tablayout.addTab(tablayout.newTab().setText("Edit Group"));
-
+        changeTabsFont();
         LL1 = (LinearLayout) findViewById(R.id.LL1increate);
         LL1.setVisibility(View.GONE);
 
@@ -292,9 +321,10 @@ public class CreateContactList extends AppCompatActivity {
     public void fillListView2(){
         lv2.setAdapter(null);
         if(getCurrentInSpinner().length()>0){
-        Cursor c = db.rawQuery("SELECT * FROM _contacts WHERE _group = '"+ getCurrentInSpinner()+"'", null);
+        Cursor c = db.multiDOA().getAllInGroup(getCurrentInSpinner());
         MyCursorAdapter adapter2 = new MyCursorAdapter(CreateContactList.this, c );
-        lv2.setAdapter(adapter2);}
+        lv2.setAdapter(adapter2);
+       }
     }
 
     public void inputAllSelectedIntoDB(String groupName){
@@ -305,13 +335,15 @@ public class CreateContactList extends AppCompatActivity {
 
         for(int i = 0; i < size; i++){
             Contact c = (Contact) lv.getItemAtPosition(positions.get(i));
-            String name = c.getName();
-            String number = c.getNumber();
-            values.put("_name", name);
-            values.put("_number", number);
-            values.put("_group", groupName);
-            Log.i("JOSH", "HERE " + name + " " + number + " "+ groupName);
-            db.insert("_contacts",null,values);
+            c.setGroup(groupName);
+            c.setTypeEntry("group");
+//            String name = c.getName();
+//            String number = c.getNumber();
+//            values.put("_name", name);
+//            values.put("_number", number);
+//            values.put("_group", groupName);
+//            Log.i("JOSH", "HERE " + name + " " + number + " "+ groupName);
+            db.multiDOA().insertAll(c);
 
             values.clear();
 
@@ -324,48 +356,30 @@ public class CreateContactList extends AppCompatActivity {
         // code here to show dialog
         super.onBackPressed();  // optional depending on your needs
 
-
-        CreateContactList.this.finish();
+        Bungee.slideRight(this);
+        this.finish();
     }
 
     public void loadFolderSpinner() {
-        if (getStringArrayListForFolders() != null) {
-            if (getStringArrayListForFolders().size() > 0) {
+
+
+            List<String> list = db.multiDOA().getDistinctGroups();
+            Log.i("JOSHnew", "size: " + list.size());
+            if(list.size() > 0){
                 adapterForSpinner = new ArrayAdapter<String>(CreateContactList.this,
-                        R.layout.spinnerz, getStringArrayListForFolders());
+                        R.layout.spinnerz, list);
 
                 adapterForSpinner.setDropDownViewResource(R.layout.spinnerzdrop);
+
                 spinner.setAdapter(adapterForSpinner);
+            }else{
+                spinner.setAdapter(null);
             }
-        }else {
-            spinner.setAdapter(null);
-
 
         }
 
-    }
-    public ArrayList<String> getStringArrayListForFolders(){
-        ArrayList<String> foldersArrayList = new ArrayList<>();
-        String query = "SELECT distinct _group FROM  _contacts;";
-        cursor = null;
-        cursor = db.rawQuery(query, null);
-        cursor.moveToFirst();
-
-        if (cursor != null && cursor.getCount() > 0) {
-
-            do {
-                foldersArrayList.add(new String(cursor.getString(0
-                )));
-            } while (cursor.moveToNext());
-        }
 
 
-        if(foldersArrayList.size()>0){
-
-            return foldersArrayList;} else{
-            return null;
-        }
-    }
     @Override
     public void onCreateContextMenu(ContextMenu menu, View view, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, view, menuInfo);
@@ -397,9 +411,9 @@ public class CreateContactList extends AppCompatActivity {
                             case DialogInterface.BUTTON_POSITIVE:
 
 
-                                Toast.makeText(getApplicationContext(), "Removed!",
-                                        Toast.LENGTH_SHORT).show();
-                                db.delete("_contacts", "_id = "+itemEntryID, null );
+                                FabToast.makeText(getApplicationContext(), "Removed!",
+                                        Toast.LENGTH_SHORT, FabToast.SUCCESS, FabToast.POSITION_DEFAULT).show();
+                                db.multiDOA().deleteWithId(itemEntryID);
                                 loadFolderSpinner();
                                 dialog.dismiss();
                                 fillListView2();
@@ -435,7 +449,7 @@ public class CreateContactList extends AppCompatActivity {
         }
     }
 public void deleteEntireFolder(String inSpinnerNow2){
-        db.delete("_contacts", "_group = '"+ inSpinnerNow2 + "'",null);
+       db.multiDOA().deleteGroup(inSpinnerNow2);
 }
 
     @Override
@@ -454,4 +468,35 @@ public void deleteEntireFolder(String inSpinnerNow2){
                 break;
         }
     }
+    private void changeTabsFont() {
+        Typeface font = Typeface.createFromAsset(CreateContactList.this.getAssets(), "Acme-Regular.ttf");
+        ViewGroup vg = (ViewGroup) tablayout.getChildAt(0);
+        int tabsCount = vg.getChildCount();
+        for (int j = 0; j < tabsCount; j++) {
+            ViewGroup vgTab = (ViewGroup) vg.getChildAt(j);
+            int tabChildsCount = vgTab.getChildCount();
+            for (int i = 0; i < tabChildsCount; i++) {
+                View tabViewChild = vgTab.getChildAt(i);
+                if (tabViewChild instanceof TextView) {
+                    ((TextView) tabViewChild).setTypeface(font);
+                }
+            }
+        }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            // Respond to the action bar's Up/Home button
+            case android.R.id.home:
+
+                Bungee.slideRight(this);
+                this.finish();
+
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+
 }

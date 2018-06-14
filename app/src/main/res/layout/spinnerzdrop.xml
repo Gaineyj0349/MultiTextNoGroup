@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<CheckedTextView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.bitwis3.gaine.multitextnogroup.CustomTextView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@android:id/text1"
     style="@style/spinnerDropDownItemStyle"
     android:singleLine="true"
@@ -8,6 +8,5 @@
     android:textColor="?attr/android:textColorPrimary"
     android:ellipsize="marquee"
     android:paddingLeft="8dp"
-    android:typeface="serif"
     android:textStyle="italic"
     android:textSize="24sp"/>

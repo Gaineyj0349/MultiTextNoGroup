@@ -2,8 +2,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.bitwis3.gaine.multitextnogroup">
 
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="Manifest.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
         android:allowBackup="true"
@@ -15,6 +21,8 @@
         <activity
             android:name=".MainActivity"
             android:label="Select Recipients"
+            android:launchMode="singleTop"
+            android:parentActivityName=".Home"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
@@ -27,20 +35,85 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".SettingsActivity"
+            android:parentActivityName=".Home"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".Main2Activity"
             android:label="Text Entry/Send"
+            android:parentActivityName=".MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".CreateContactList"
             android:label="Manage Groups"
+            android:parentActivityName=".Home"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".SelectContactsToAdd"
-            android:screenOrientation="portrait"
             android:label="Add Contacts to List"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:parentActivityName=".Home"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Home"
+            android:label="@string/app_name"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".DBtransition"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ActivityLog"
+            android:launchMode="singleTop"
+            android:parentActivityName=".Home"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Main3Activity"
+            android:label="@string/title_activity_main3"
+            android:parentActivityName=".Main2Activity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <receiver
+            android:name=".MyReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name=".ServiceToSendPending"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity
+            android:name=".AutoAct"
+            android:parentActivityName=".Home"
+            android:screenOrientation="portrait" />
+
+        <service
+            android:name=".AutoReplyService"
+            android:enabled="true"
+            android:exported="true" />
+        <activity android:name=".Credits"
+            android:parentActivityName=".Home"
+            android:screenOrientation="portrait"/>
+        <receiver
+            android:name=".AutoReciever"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+                <action android:name="android.intent.action.DATA_SMS_RECEIVED" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

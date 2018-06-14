@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AutoAct"
+    android:padding="@dimen/fab_margin">
+
+    <Switch
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:id="@+id/switch_auto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Turn On  " />
+
+
+    <EditText
+        android:id="@+id/autoET"
+        android:gravity="top"
+        android:layout_below="@+id/switch_auto"
+        android:hint="Type your reply message here."
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+
+
+
+</RelativeLayout>

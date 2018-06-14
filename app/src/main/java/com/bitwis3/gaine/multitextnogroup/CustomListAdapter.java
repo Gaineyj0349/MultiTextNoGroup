@@ -1,6 +1,7 @@
 package com.bitwis3.gaine.multitextnogroup;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -88,10 +89,31 @@ public class CustomListAdapter extends BaseAdapter {
 
         checkBox.setChecked(itemChecked.get(position)); // set the checkbox state base on arraylist object state
         Log.i("JOSH CursorAdapter","position: "+position+" - checkbox state: "+itemChecked.get(position));
+        StringBuilder sb = new StringBuilder();
+        sb.append(currentContact.getNumber());
+        sb.append("-");
+        switch (currentContact.getType()){
+            case 0: sb.append("");
+                break;
+            case 1: sb.append("home");
+                break;
+            case 2: sb.append(" mobile");
+                break;
+            case 3: sb.append("work");
+                break;
+            case 17: sb.append("work mobile");
+                break;
+            default: break;
 
+        }
+        Typeface font = Typeface.createFromAsset(context.getAssets(), "Acme-Regular.ttf");
         //sets the text for item name and item description from the current item object
+        tv1Name.setTypeface(font);
+        tv2Number.setTypeface(font);
+//        tv1Name.setTextColor(Color.WHITE);
+//        tv2Number.setTextColor(Color.WHITE);
         tv1Name.setText(currentContact.getName());
-        tv2Number.setText(currentContact.getNumber());
+        tv2Number.setText(sb.toString());
 
         // returns the view for the current row
         return convertView;

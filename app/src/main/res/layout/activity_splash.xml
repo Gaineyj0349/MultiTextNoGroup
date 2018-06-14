@@ -5,11 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.bitwis3.gaine.multitextnogroup.splash"
-    android:background="#ffffff">
+    android:background="@color/colorPrimaryDark">
 
     <ImageView
-        android:layout_width="368dp"
-        android:layout_height="495dp"
+        android:id="@+id/image"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
         android:src="@drawable/splash"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="8dp"

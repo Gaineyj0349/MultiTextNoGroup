@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.bitwis3.gaine.multitextnogroup.CustomTextView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@android:id/text1"
     style="@style/spinnerItemStyle"
     android:singleLine="true"
@@ -9,7 +9,6 @@
     android:layout_height="wrap_content"
     android:ellipsize="marquee"
     android:textSize="24sp"
-    android:typeface="serif"
     android:textStyle="italic"
 
     />

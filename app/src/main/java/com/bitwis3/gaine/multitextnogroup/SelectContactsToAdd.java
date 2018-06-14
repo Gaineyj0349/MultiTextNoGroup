@@ -1,13 +1,12 @@
 package com.bitwis3.gaine.multitextnogroup;
 
+import android.arch.persistence.room.Room;
 import android.content.ContentValues;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
 
@@ -15,9 +14,10 @@ import java.util.ArrayList;
 
 public class SelectContactsToAdd extends AppCompatActivity {
 ListView lv;
-SQLiteDatabase db;
-DBHelper helper;
+//SQLiteDatabase db;
+//DBHelper helper;
 ContentValues values;
+DBRoom db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,12 +25,19 @@ ContentValues values;
         setContentView(R.layout.activity_select_contacts_to_add);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setBackgroundDrawable(getResources().getDrawable(R.drawable.gradient4));
         lv = (ListView)findViewById(R.id.lvforedit);
         values = new ContentValues();
         final String group = getIntent().getStringExtra("key");
 
-        helper = new DBHelper(this, "_contactDB", null, 1);
-        db = helper.getWritableDatabase();
+        db = Room.databaseBuilder(getApplicationContext(),
+                DBRoom.class, "_database_multi_master")
+                .fallbackToDestructiveMigration()
+                .allowMainThreadQueries().build();
+
+//        helper = new DBHelper(this, "_contactDB", null, 1);
+//        db = helper.getWritableDatabase();
 
         fillListView();
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -69,13 +76,15 @@ ContentValues values;
 
         for(int i = 0; i < size; i++){
             Contact c = (Contact) lv.getItemAtPosition(positions.get(i));
-            String name = c.getName();
-            String number = c.getNumber();
-            values.put("_name", name);
-            values.put("_number", number);
-            values.put("_group", groupName);
-            Log.i("JOSH", "HERE " + name + " " + number + " "+ groupName);
-            db.insert("_contacts",null,values);
+//            String name = c.getName();
+//            String number = c.getNumber();
+//            values.put("_name", name);
+//            values.put("_number", number);
+//            values.put("_group", groupName);
+            c.setGroup(groupName);
+            c.setTypeEntry("group");
+//            Log.i("JOSH", "HERE " + name + " " + number + " "+ groupName);
+            db.multiDOA().insertAll(c);
 
             values.clear();
 

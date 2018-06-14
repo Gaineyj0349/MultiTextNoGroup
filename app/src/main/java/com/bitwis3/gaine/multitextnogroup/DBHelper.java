@@ -5,10 +5,12 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 public class DBHelper extends SQLiteOpenHelper {
+  Context context;
 
   public DBHelper(Context context, String dbName,
                   SQLiteDatabase.CursorFactory factory, int version) {
     super(context, dbName, factory, version);
+    this.context = context;
   }
 
   @Override
@@ -31,4 +33,5 @@ public class DBHelper extends SQLiteOpenHelper {
     db.execSQL(dropString);
     onCreate(db);
   }
+
 }
