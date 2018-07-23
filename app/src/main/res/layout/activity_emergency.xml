@@ -1,0 +1,433 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Emergency"
+>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:background="@color/colorPrimaryDark"
+        android:id="@+id/mainLLmode"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <com.bitwis3.gaine.multitextnogroup.CustomTextView
+        android:onClick="reload"
+        android:id="@+id/reload"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:fontFamily="casual"
+        android:textStyle="italic|bold"
+        android:background="@color/blue"
+        android:text="CLICK HERE\nTO RELOAD"
+        android:textColor="#ffffff"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <android.support.v7.widget.CardView
+        app:cardCornerRadius="@dimen/fab_margin"
+        android:layout_marginTop="28dp"
+        android:layout_marginBottom="14dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/gradient9"
+            android:orientation="vertical">
+
+            <com.bitwis3.gaine.multitextnogroup.CustomTextView
+                android:id="@+id/emergencytvtitle1"
+                android:textAlignment="center"
+                android:textSize="16sp"
+                android:fontFamily="casual"
+                android:textStyle="italic|bold"
+                android:background="@color/red"
+                android:text="@string/emergency1"
+                android:textColor="#ffffff"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:id="@+id/llemergencysetupcard1"
+                android:background="@color/white"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center">
+
+                <ImageView
+                    android:src="@drawable/ic_settings_black_24dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <com.bitwis3.gaine.multitextnogroup.CustomTextView
+                    android:textAlignment="center"
+                    android:textSize="8sp"
+                    android:fontFamily="casual"
+                    android:textStyle="italic|bold"
+                    android:shadowColor="@color/cardview_dark_background"
+                    android:text="HOLD\nFOR\nSET-UP"
+                    android:textColor="@color/oldp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:onClick="SENDNOW"
+                android:orientation="horizontal"
+                android:id="@+id/llemergencysendcard1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="5"
+                android:gravity="center">
+
+                <com.bitwis3.gaine.multitextnogroup.CustomTextView
+                    android:textAlignment="center"
+                    android:textSize="30sp"
+                    android:fontFamily="casual"
+                    android:textStyle="italic|bold"
+                    android:text="@string/taptwice"
+                    android:textColor="#ffffff"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        app:cardCornerRadius="@dimen/fab_margin"
+        android:layout_marginTop="14dp"
+        android:layout_marginBottom="14dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/gradient9"
+            android:orientation="vertical">
+
+            <com.bitwis3.gaine.multitextnogroup.CustomTextView
+                android:id="@+id/emergencytvtitle2"
+                android:textAlignment="center"
+                android:textSize="16sp"
+                android:fontFamily="casual"
+                android:textStyle="italic|bold"
+                android:background="@color/red"
+                android:text="@string/emergency2"
+                android:textColor="#ffffff"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:id="@+id/llemergencysetupcard2"
+                    android:background="@color/white"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:src="@drawable/ic_settings_black_24dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <com.bitwis3.gaine.multitextnogroup.CustomTextView
+                        android:textAlignment="center"
+                        android:textSize="8sp"
+                        android:fontFamily="casual"
+                        android:textStyle="italic|bold"
+                        android:shadowColor="@color/cardview_dark_background"
+                        android:text="HOLD\nFOR\nSET-UP"
+                        android:textColor="@color/oldp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:onClick="SENDNOW"
+                    android:orientation="horizontal"
+                    android:id="@+id/llemergencysendcard2"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="5"
+                    android:gravity="center">
+
+                    <com.bitwis3.gaine.multitextnogroup.CustomTextView
+                        android:textAlignment="center"
+                        android:textSize="30sp"
+                        android:fontFamily="casual"
+                        android:textStyle="italic|bold"
+                        android:text="@string/taptwice"
+                        android:textColor="#ffffff"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        app:cardCornerRadius="@dimen/fab_margin"
+        android:layout_marginTop="14dp"
+        android:layout_marginBottom="28dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        >
+        <LinearLayout
+            android:background="@drawable/gradient9"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+           >
+
+            <com.bitwis3.gaine.multitextnogroup.CustomTextView
+
+                android:id="@+id/emergencytvtitle3"
+                android:textAlignment="center"
+                android:textSize="16sp"
+                android:fontFamily="casual"
+                android:textStyle="italic|bold"
+                android:background="@color/red"
+                android:text="@string/emergency3"
+                android:textColor="#ffffff"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:id="@+id/llemergencysetupcard3"
+                    android:background="@color/white"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_settings_black_24dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <com.bitwis3.gaine.multitextnogroup.CustomTextView
+                        android:textAlignment="center"
+                        android:textSize="8sp"
+                        android:fontFamily="casual"
+                        android:textStyle="italic|bold"
+                        android:shadowColor="@color/cardview_dark_background"
+                        android:text="HOLD\nFOR\nSET-UP"
+                        android:textColor="@color/oldp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+                <LinearLayout
+
+                    android:onClick="SENDNOW"
+                    android:orientation="horizontal"
+                    android:id="@+id/llemergencysendcard3"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="5"
+                    android:gravity="center">
+
+                    <com.bitwis3.gaine.multitextnogroup.CustomTextView
+                        android:textAlignment="center"
+                        android:textSize="30sp"
+                        android:fontFamily="casual"
+                        android:textStyle="italic|bold"
+                        android:text="@string/taptwice"
+                        android:textColor="#ffffff"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </android.support.v7.widget.CardView>
+    <com.bitwis3.gaine.multitextnogroup.CustomTextView
+        android:onClick="permlatlong"
+        android:id="@+id/locationView"
+        android:layout_alignParentBottom="true"
+        android:textAlignment="center"
+        android:fontFamily="casual"
+        android:textStyle="italic|bold"
+        android:background="@color/blue"
+        android:text="Location will appear here\n click to enable.."
+        android:textColor="#ffffff"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/grey"
+        android:id="@+id/respondLLmode"
+        android:padding="@dimen/fab_margin">
+
+        <android.support.v7.widget.CardView
+
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginEnd="8dp"
+            app:cardCornerRadius="@dimen/fab_margin"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:elevation="@dimen/fab_margin"
+            app:cardBackgroundColor="@color/white"
+            >
+        <LinearLayout
+            android:padding="@dimen/fab_margin"
+            android:id="@+id/respondll1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <com.bitwis3.gaine.multitextnogroup.CustomTextView
+                android:id="@+id/respondtv1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"/>
+            <ImageView
+                android:src="@drawable/levels"
+                android:id="@+id/respondiv1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+        </android.support.v7.widget.CardView>
+        <android.support.v7.widget.CardView
+
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginEnd="8dp"
+            app:cardCornerRadius="@dimen/fab_margin"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:elevation="@dimen/fab_margin"
+            app:cardBackgroundColor="@color/white"
+            >
+        <LinearLayout
+            android:padding="@dimen/fab_margin"
+            android:id="@+id/respondll2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <com.bitwis3.gaine.multitextnogroup.CustomTextView
+                android:id="@+id/respondtv2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"/>
+            <ImageView
+                android:src="@drawable/levels"
+                android:id="@+id/respondiv2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+        </android.support.v7.widget.CardView>
+        <android.support.v7.widget.CardView
+
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginEnd="8dp"
+            app:cardCornerRadius="@dimen/fab_margin"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:elevation="@dimen/fab_margin"
+            app:cardBackgroundColor="@color/white"
+            >
+        <LinearLayout
+            android:padding="@dimen/fab_margin"
+            android:id="@+id/respondll3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <com.bitwis3.gaine.multitextnogroup.CustomTextView
+                android:id="@+id/respondtv3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"/>
+            <ImageView
+                android:src="@drawable/levels"
+                android:id="@+id/respondiv3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <com.bitwis3.gaine.multitextnogroup.CustomTextView
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:background="@color/colorAccent"
+            android:id="@+id/lasttvemer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</android.support.design.widget.CoordinatorLayout>

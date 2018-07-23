@@ -1,44 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="@dimen/fab_margin">
 
 
-    <TextView
-        android:paddingLeft="8dp"
+    <EditText
+        android:gravity="center"
         android:id="@+id/tvinDialog"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
+   android:layout_alignParentTop="true"
         android:text="test"
         android:textSize="30sp"
         android:layout_marginBottom="2dp"/>
 
     <View
+        android:id="@+id/v12"
+        android:layout_below="@id/tvinDialog"
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:background="@color/colorPrimaryDark"
       />
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:id="@+id/createll"
+        android:layout_below="@id/v12"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/buttonindialogtodeleteentiregroup"
-            style="@style/Widget.AppCompat.Button.Colored"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Delete this\nentire group" />
 
         <Button
             android:id="@+id/buttonindialogtoaddpeopletogroup"
             style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Add Contacts\nto this group" />
+            android:text="Add From Contacts\nto this group" />
+        <Button
+            android:id="@+id/buttonindialogtoremovepeoplegroup"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Add/Delete\nCustom Contacts" />
     </LinearLayout>
-</LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/createll2"
+        android:layout_below="@id/createll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/buttonindialogtoclonegroup"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Clone Group" />
+        <Button
+            android:id="@+id/buttonindialogtodeleteentiregroup"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Delete this\nentire group" />
+
+
+    </LinearLayout>
+
+    <Button
+        android:layout_below="@id/createll2"
+        android:id="@+id/buttonindialogtosave"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:text="Save Changes" />
+</RelativeLayout>

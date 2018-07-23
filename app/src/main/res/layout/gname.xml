@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/fab_margin">
+
+    <EditText
+        android:gravity="center"
+        android:hint="Cloned Groups Name..."
+        android:id="@+id/etgn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/saveb"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/etgn"
+        android:text="SAVE"
+        android:textColor="#ffffff" />
+
+</RelativeLayout>

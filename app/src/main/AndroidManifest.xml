@@ -10,6 +10,8 @@
     <uses-permission android:name="Manifest.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -83,7 +85,6 @@
             android:enabled="true"
             android:exported="true">
             <intent-filter>
-
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
@@ -102,9 +103,12 @@
             android:name=".AutoReplyService"
             android:enabled="true"
             android:exported="true" />
-        <activity android:name=".Credits"
+
+        <activity
+            android:name=".Credits"
             android:parentActivityName=".Home"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
+
         <receiver
             android:name=".AutoReciever"
             android:enabled="true"
@@ -114,6 +118,40 @@
                 <action android:name="android.intent.action.DATA_SMS_RECEIVED" />
             </intent-filter>
         </receiver>
+
+        <activity android:name=".ImportExport"
+            android:parentActivityName=".Home"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".ContactRemove"
+            android:parentActivityName=".CreateContactList"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".Emergency"
+            android:parentActivityName=".Home"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".EditEmergency"
+            android:parentActivityName=".Emergency"
+            android:screenOrientation="portrait"
+            android:label="@string/title_activity_edit_emergency"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+
+        <service
+            android:name=".BreakThru"
+            android:enabled="true"
+            android:exported="true"></service>
+
+        <activity
+            android:screenOrientation="portrait"
+            android:name=".Wakeup"
+            android:label="@string/title_activity_wakeup"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <service
+            android:name=".MyServiceToSendLocation"
+            android:enabled="true"
+            android:exported="true"></service>
+
     </application>
 
 </manifest>

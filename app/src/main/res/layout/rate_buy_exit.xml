@@ -8,7 +8,7 @@
         <com.bitwis3.gaine.multitextnogroup.CustomTextView
             android:layout_margin="@dimen/fab_margin"
             android:textAlignment="center"
-            android:textColor="@color/colorPrimaryDark"
+            android:textColor="@color/oldp"
             android:text="@string/ratebuy"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
@@ -16,7 +16,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:background="@color/colorPrimaryDark"/>
+        android:background="@color/oldp"/>
 
     <LinearLayout
         android:id="@+id/llrate"
@@ -35,7 +35,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:background="@color/colorPrimaryDark"/>
+        android:background="@color/oldp"/>
 
     <LinearLayout
         android:id="@+id/llbuy"
@@ -54,7 +54,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:background="@color/colorPrimaryDark"/>
+        android:background="@color/oldp"/>
 
     <LinearLayout
         android:orientation="horizontal"
@@ -72,13 +72,13 @@
             <com.bitwis3.gaine.multitextnogroup.CustomTextView
                 android:layout_margin="@dimen/fab_margin"
                 android:textAlignment="center"
-                android:textColor="@color/colorPrimaryDark"
+                android:textColor="@color/oldp"
                 android:text="@string/nonever"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </LinearLayout>
         <View
-            android:background="@color/colorPrimaryDark"
+            android:background="@color/oldp"
             android:layout_weight=".01"
             android:layout_width="0dp"
             android:layout_height="match_parent"/>
@@ -92,7 +92,7 @@
             <com.bitwis3.gaine.multitextnogroup.CustomTextView
                 android:layout_margin="@dimen/fab_margin"
                 android:textAlignment="center"
-                android:textColor="@color/colorPrimaryDark"
+                android:textColor="@color/oldp"
                 android:text="@string/later"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />

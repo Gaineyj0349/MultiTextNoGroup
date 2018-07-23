@@ -1,29 +1,48 @@
 <resources>
     <string name="app_name">Multi-Text</string>
     <string name="action_settings">Settings</string>
+    <string name="autotext"><u>AUTO-TEXT</u></string>
+    <string name="breakthru"><u>WAKE-UP</u></string>
     <string name="title_activity_main2">Main2Activity</string>
     <string name="title_activity_create_contact_list">CreateContactList</string>
     <string name="title_activity_select_contacts_to_add">SelectContactsToAdd</string>
     <string name="title_activity_home">Home</string>
-    <string name="auto_text_mode"><u>AUTO TEXT MODE</u></string>
+    <string name="auto_text_mode"><u>AUTO TEXT &amp; WAKE-UP</u></string>
     <string name="classic_text_many"><u>TEXT MANY NO GROUP</u></string>
-    <string name="timed_text_message"><u>TIMED TEXTS</u></string>
+    <string name="timed_text_message"><u>TIMED TEXTING</u></string>
     <string name="app_history"><u>APP LOGS</u></string>
+    <string name="taptwice"> TAP TWICE\nTO SEND NOW</string>
+    <string name="emergency"><u>PRESET TEXTING</u></string>
     <string name="mit"><u>MIT</u></string>
     <string name="rate"><u>RATE</u></string>
+    <string name="emergency1"><u>Custom Preset Text 1: </u></string>
+    <string name="emergency2"><u>Custom Preset Text 2: </u></string>
+    <string name="emergency3"><u>Custom Preset Text 3: </u></string>
+    <string name="edittv1"><u>PROFILE LABEL</u></string>
+    <string name="edittv2"><u>RECIPIENT GROUP</u></string>
+    <string name="edittv5"><u>PROFILE ICON</u></string>
+    <string name="edittv3"><u>MESSAGE BODY</u></string>
+    <string name="edittv4"><u>INCLUDE CURRENT\nLOCATION IN MESSAGE?</u></string>
     <string name="gopro"><u>GET THE PRO VERSION</u></string>
     <string name="nonever"><u>Do Not\nAsk Again</u></string>
     <string name="later"><u>Maybe later\nExit Now</u></string>
     <string name="create"><u>CREATE</u></string>
     <string name="privacy"><u>PRIVACY POLICY</u></string>
     <string name="apache"><u>APACHE 2.0</u></string>
-    <string name="group_management"><u>YOUR GROUPS</u></string>
-    <string name="card1info">This mode is like an "answering machine" for your text messages. When enabled, your device will automatically reply to any incoming text (data texts like images not included yet) messages with a preset message of your custom making. IMPORTANT - when enabled, there will be a notification for status. Simply press the notification to launch the screen where you can quickly turn it off. This mode does not persist through device reboot. If this Auto Text mode is turned on and your device restarts, Auto Text mode is automatically turned off..\n\n(PLEASE NOTE - This is not a separate texting app, but rather a tool for extending the functionality of your own native android messaging app. Also remember, these info tips can be turned off in the settings.)</string>
+    <string name="group_management"><u>GROUPS AREA</u></string>
+    <string name="card1info">AutoText mode is like an "answering machine" for your text messages. When enabled, your device will automatically reply to any incoming texts (data texts like images not included yet) with a preset message of your custom making. IMPORTANT - when enabled, there will be a notification for status. Simply press the notification to launch the screen where you can quickly turn it off. This mode does not persist through device reboot.\nALSO added the feature Wake-up simply enable a 5 character long "password" for someone to text to you and wake the device up and alert you!
+   ..\n\n(PLEASE NOTE - This is not a separate texting app, but rather a tool for extending the functionality of your own native android messaging app. Also remember, these info tips can be turned off in the settings.)</string>
     <string name="card2info">This feature allows you to create one message and send it to as many people as desired without creating a group chat. (This is the classic Multi-Text mode for the previous users)\n\n(PLEASE NOTE - This is not a separate texting app, but rather a tool for extending the functionality of your own native android messaging app. Also remember, these info tips can be turned off in the settings.)</string>
     <string name="card3info">This feature allows you to set up a timed text message to an individual, or to a group of people. When you set up timed text messages, they will go into the Log under the Pending tab. You can also edit or cancel there. If you have texts that were supposed to send but your device was powered off, upon reboot a notification will pop up to let you know - you can choose to delete them or send them in the Logs under UNSENT\n\n(PLEASE NOTE - This is not a separate texting app, but rather a tool for extending the functionality of your own native android messaging app. Also remember, these info tips can be turned off in the settings.)</string>
     <string name="card4info">Any and all of the messages this app helps your native messaging app send will enter into this log. There are 2 tabs - one for history and one for pending texts that have not sent yet but were set up in the Timed Text Message feature It will include the date, person, and message.\n\n(PLEASE NOTE - This is not a separate texting app, but rather a tool for extending the functionality of your own native android messaging app. Also remember, these info tips can be turned off in the settings.)</string>
+    <string name="card6info">Here you can set up preset text profiles for quick texting. There is an information icon at the top of the PRESET TEXTING screen with an instructional video. \n\n(PLEASE NOTE - This is not a separate texting app, but rather a tool for extending the functionality of your own native android messaging app. Also remember, these info tips can be turned off in the settings.)</string>
+
     <string name="card5info">This is where you manage your groups. (creation/editing)\n\n(PLEASE NOTE - This is not a separate texting app, but rather a tool for extending the functionality of your own native android messaging app. Also remember, these info tips can be turned off in the settings.)</string>
     <string name="title_activity_main3">Main3Activity</string>
-    <string name="credit">There is a paid version in the works that will be ad free. Please check back here for a the link to upgrade for a smoother experience in the coming weeks.\n\nBelow are links to the licenses for the privacy policy and libraries used in this app.</string>
-    <string name="ratebuy">Like this app?\nPlease rate us on the play store!\nThere is a pro version available with no ads!</string>
+    <string name="credit">Thank you for downloading. The goal of Multi-Text is not to be a "customization" app for your texting services. Rather, the goal is to extend its functionality
+        as well as add in some useful features.\n\nBelow are links to the licenses for the privacy policy and libraries used in this app.</string>
+    <string name="ratebuy">Like this app?\nPlease rate us on the play store!\n</string>
+    <string name="title_activity_edit_emergency">Edit Preset</string>
+    <string name="title_activity_wakeup">Wakeup</string>
 </resources>
+

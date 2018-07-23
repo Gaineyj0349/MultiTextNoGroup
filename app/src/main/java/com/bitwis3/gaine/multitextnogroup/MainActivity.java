@@ -20,6 +20,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -296,6 +297,13 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_emergency, menu);
+        return true;
+    }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -304,9 +312,16 @@ public class MainActivity extends AppCompatActivity {
             case android.R.id.home:
 
                 Bungee.slideRight(this);
-                MainActivity.this.finish();
+                this.finish();
 
                 return true;
+
+
+            case R.id.emergencytoolbar:
+                startActivity(new Intent(this, Emergency.class));
+                this.finish();
+                return true;
+
         }
         return super.onOptionsItemSelected(item);
     }
@@ -368,25 +383,35 @@ public class MainActivity extends AppCompatActivity {
 
     public static ArrayList<Contact> getContactsList(Context context) {
         ArrayList<String> numbers = new ArrayList<>();
+        ArrayList<String> tempNums = new ArrayList<>();
         ArrayList<Contact> contacts = new ArrayList<>();
         Cursor phones = context.getContentResolver().query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
                 null, null, null, null);
         while (phones.moveToNext()) {
             String name = phones.getString(phones.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME));
             String phoneNumber = phones.getString(phones.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
+            String modNumber = phoneNumber.replaceAll("[^0-9]", "");
+
             int type = phones.getInt(phones.getColumnIndex(ContactsContract.CommonDataKinds.Phone.TYPE));
             Log.i("JOSHtest", "" + type);
-           if(!numbers.contains(phoneNumber)){
+
+           if(!tempNums.contains(modNumber)){
                contacts.add(new Contact(name, phoneNumber, type));
            }
+            tempNums.add(modNumber);
             numbers.add(phoneNumber);
         }
         phones.close();
-        Collections.sort(contacts, new Comparator<Contact>() {
-            public int compare(Contact v1, Contact v2) {
-                return v1.getName().compareTo(v2.getName());
-            }
-        });
+        try{
+            Collections.sort(contacts, new Comparator<Contact>() {
+                public int compare(Contact v1, Contact v2) {
+                    return v1.getName().compareTo(v2.getName());
+                }
+            });
+        }catch (Exception e){
+
+        }
+
 
 
 

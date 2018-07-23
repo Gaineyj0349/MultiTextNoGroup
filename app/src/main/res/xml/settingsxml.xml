@@ -9,5 +9,8 @@
         android:defaultValue="true" />
 
 
-
+    <SwitchPreferenceCompat
+        android:key="rapid"
+        android:title="Enable Quick Presets?"
+        android:defaultValue="false" />
 </PreferenceScreen>

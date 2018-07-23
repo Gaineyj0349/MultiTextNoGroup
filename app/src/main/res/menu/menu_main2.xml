@@ -1,0 +1,20 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.bitwis3.gaine.multitextnogroupPRO.MainActivity" >
+    <item android:id="@+id/information"
+        android:title="INFO"
+        android:orderInCategory="100"
+        android:icon="@drawable/ic_info_outline_white_24dp"
+        app:showAsAction="always" />
+    <item android:id="@+id/action_settings2"
+        android:title="Settings"
+        android:orderInCategory="100"
+        app:showAsAction="never" />
+    <item android:id="@+id/continueApp"
+        android:title="Continue To App"
+        android:orderInCategory="100"
+        app:showAsAction="never" />
+
+
+</menu>

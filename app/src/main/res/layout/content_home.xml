@@ -46,7 +46,7 @@
                         <com.bitwis3.gaine.multitextnogroup.CustomTextView
 
                             android:textAlignment="center"
-                            android:textSize="26sp"
+                            android:textSize="22sp"
                             android:fontFamily="casual"
                             android:textStyle="italic|bold"
                             android:text="@string/classic_text_many"
@@ -108,7 +108,7 @@
                     <com.bitwis3.gaine.multitextnogroup.CustomTextView
                         android:layout_alignParentTop="true"
                         android:textAlignment="center"
-                        android:textSize="26sp"
+                        android:textSize="22sp"
                         android:fontFamily="casual"
                         android:textStyle="italic|bold"
                         android:text="@string/timed_text_message"
@@ -168,7 +168,7 @@
                 <com.bitwis3.gaine.multitextnogroup.CustomTextView
 
                     android:textAlignment="center"
-                    android:textSize="26sp"
+                    android:textSize="22sp"
                     android:fontFamily="casual"
                     android:textStyle="italic|bold"
                     android:text="@string/auto_text_mode"
@@ -246,7 +246,7 @@
                 <com.bitwis3.gaine.multitextnogroup.CustomTextView
                     android:layout_alignParentTop="true"
                     android:textAlignment="center"
-                    android:textSize="26sp"
+                    android:textSize="22sp"
                     android:fontFamily="casual"
                     android:textStyle="italic|bold"
                     android:text="@string/group_management"
@@ -299,7 +299,7 @@
                     <com.bitwis3.gaine.multitextnogroup.CustomTextView
                         android:layout_alignParentTop="true"
                         android:textAlignment="center"
-                        android:textSize="26sp"
+                        android:textSize="22sp"
                         android:fontFamily="casual"
                         android:textStyle="italic|bold"
                         android:text="@string/app_history"
@@ -330,5 +330,65 @@
             </android.support.v7.widget.CardView>
 
 
+    <android.support.v7.widget.CardView
+        android:onClick="goToEmergency"
+        app:cardCornerRadius="@dimen/fab_margin"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/gradient8">
+
+            <io.supercharge.shimmerlayout.ShimmerLayout
+                android:id="@+id/shimmer_text_card6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="50dp"
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp"
+                app:shimmer_animation_duration="4000">
+
+                <com.bitwis3.gaine.multitextnogroup.CustomTextView
+                    android:layout_alignParentTop="true"
+                    android:textAlignment="center"
+                    android:textSize="22sp"
+                    android:fontFamily="casual"
+                    android:textStyle="italic|bold"
+                    android:text="@string/emergency"
+                    android:textColor="#ffffff"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </io.supercharge.shimmerlayout.ShimmerLayout>
+            <ImageView
+                android:onClick="infoClicked"
+                android:id="@+id/card6info"
+                android:src="@drawable/ic_info_outline_white_24dp"
+                android:layout_margin="4dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <ImageView
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/nextwhite_24dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent" />
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
 
 </LinearLayout>

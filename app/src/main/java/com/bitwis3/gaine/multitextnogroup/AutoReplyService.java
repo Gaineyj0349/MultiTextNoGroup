@@ -20,7 +20,7 @@ public class AutoReplyService extends Service {
 
     @Override
     public IBinder onBind(Intent intent) {
-       return null;
+        return null;
     }
 
     @Override
@@ -43,11 +43,11 @@ public class AutoReplyService extends Service {
             String status = preferences.getString("auto_reply_mode_on_off", "off");
             if(status.equals("on")){
                 startForeground(2, getNotificationforAuto());
-           }else{
-               stopForeground(true);
-               stopSelf();
-               onDestroy();
-           }
+            }else{
+                stopForeground(true);
+                stopSelf();
+                onDestroy();
+            }
         }
 
         return START_STICKY;
@@ -57,7 +57,8 @@ public class AutoReplyService extends Service {
     private Notification getNotificationforAuto(){
         RemoteViews contentView = new RemoteViews("com.bitwis3.gaine.multitextnogroup", R.layout.custom_notification);
         contentView.setImageViewResource(R.id.image, R.mipmap.icon);
-        contentView.setTextViewText(R.id.notificationtext, "Auto Text Mode is ON - tap to change.");
+        contentView.setTextViewText(R.id.notificationtext, "Auto Text AND/OR \nWake-Up- tap to change.");
+
 
         Notification.Builder builder =
                 new Notification.Builder(this);
@@ -72,14 +73,17 @@ public class AutoReplyService extends Service {
         int latestCode = db.multiDOA().getLatestCode();
         Log.i("JOSHser", String.valueOf(latestCode));
         PendingIntent pendingIntent =
-                PendingIntent.getActivity(this, 1000000001
+                PendingIntent.getActivity(this, 1000510001
                         , intent2, 0);
 
 
 
         builder.setContentIntent(pendingIntent);
         builder.setContent(contentView);
-        builder.setContentTitle("Auto Text Mode is ON - tap to change.");
+
+                builder.setContentTitle("Auto Text AND/OR \nWake-Up - tap to change.");;
+
+
         builder.setAutoCancel(true);
         builder.setPriority(Notification.PRIORITY_MAX);
         builder.setDefaults(Notification.DEFAULT_VIBRATE);

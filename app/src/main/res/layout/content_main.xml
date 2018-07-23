@@ -29,7 +29,7 @@
 
         android:gravity="center_horizontal">
         <View
-            android:background="@color/colorPrimaryDark"
+            android:background="@color/oldp"
             android:layout_width="match_parent"
             android:layout_height="2dp"/>
     <Spinner
@@ -43,7 +43,7 @@
         android:minWidth="150dp"
         />
         <View
-            android:background="@color/colorPrimaryDark"
+            android:background="@color/oldp"
             android:layout_width="match_parent"
             android:layout_height="2dp"/>
     </LinearLayout>

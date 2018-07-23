@@ -2,15 +2,20 @@ package com.bitwis3.gaine.multitextnogroup;
 
 import android.arch.persistence.room.Room;
 import android.content.ContentValues;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+
+import spencerstudios.com.bungeelib.Bungee;
 
 public class SelectContactsToAdd extends AppCompatActivity {
 ListView lv;
@@ -50,6 +55,35 @@ DBRoom db;
                 SelectContactsToAdd.this.finish();
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_emergency, menu);
+        return true;
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            // Respond to the action bar's Up/Home button
+            case android.R.id.home:
+
+                Bungee.slideRight(this);
+                this.finish();
+
+                return true;
+
+
+            case R.id.emergencytoolbar:
+                startActivity(new Intent(this, Emergency.class));
+                this.finish();
+                return true;
+
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     public void fillListView(){

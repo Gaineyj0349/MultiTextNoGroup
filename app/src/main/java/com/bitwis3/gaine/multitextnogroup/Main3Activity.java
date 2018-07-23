@@ -13,6 +13,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.DatePicker;
@@ -155,16 +156,19 @@ public class Main3Activity extends AppCompatActivity {
 
                 db.multiDOA().insertAll(contact);
 
-                AlarmManager alarmManager = (AlarmManager) Main3Activity.this.getSystemService(Context.ALARM_SERVICE);
-                Intent intent = new Intent(Main3Activity.this, MyReceiver.class);
-                intent.putExtra("timed","timed");
 
-                long calTime = cal.getTimeInMillis();
-                intent.putExtra("timeInMillis",calTime);
-                PendingIntent pendingIntent = PendingIntent.getBroadcast(Main3Activity.this, latestCode, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-                alarmManager.setExact(AlarmManager.RTC_WAKEUP, calTime, pendingIntent);
 
             }
+
+
+            AlarmManager alarmManager = (AlarmManager) Main3Activity.this.getSystemService(Context.ALARM_SERVICE);
+        Intent intent = new Intent(Main3Activity.this, MyReceiver.class);
+        intent.putExtra("timed","timed");
+
+        long calTime = cal.getTimeInMillis();
+        intent.putExtra("timeInMillis",calTime);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(Main3Activity.this, db.multiDOA().getLatestCode(), intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        alarmManager.setExact(AlarmManager.RTC_WAKEUP, calTime, pendingIntent);
         FabToast.makeText(Main3Activity.this , "Success, you can view your future text messages in your Logs, under the Pending tab.",
                 Toast.LENGTH_LONG, FabToast.SUCCESS, FabToast.POSITION_DEFAULT).show();
             Bungee.slideRight(this);
@@ -196,15 +200,30 @@ public class Main3Activity extends AppCompatActivity {
 
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_emergency, menu);
+        return true;
+    }
+
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             // Respond to the action bar's Up/Home button
             case android.R.id.home:
 
                 Bungee.slideRight(this);
-
+                this.finish();
 
                 return true;
+
+
+            case R.id.emergencytoolbar:
+                startActivity(new Intent(this, Emergency.class));
+                this.finish();
+                return true;
+
         }
         return super.onOptionsItemSelected(item);
     }

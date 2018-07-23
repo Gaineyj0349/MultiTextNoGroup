@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ContactRemove"
+   >
+
+    <RelativeLayout
+        android:padding="@dimen/fab_margin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:layout_alignParentTop="true"
+            android:id="@+id/addet1"
+            android:hint="Custom Name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:inputType="phone"
+            android:layout_below="@+id/addet1"
+            android:id="@+id/addet2"
+            android:hint="Custom Number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <ImageView
+
+            android:onClick="addIn"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/add"/>
+        <View
+            android:layout_below="@id/addet2"
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:background="@color/oldp"/>
+    </RelativeLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rvcont"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
+
+</LinearLayout>

@@ -53,15 +53,17 @@ Context context;
         }
 
 
+
     }
    void clearAutoPrefs(){
        SharedPreferences.Editor editor = context.getSharedPreferences("AUTO_PREF", Context.MODE_PRIVATE).edit();
        editor.putString("message", "");
        editor.putString("auto_reply_mode_on_off", "off");
+       editor.putString("break_thru_mode_on_off", "off");
        editor.apply();
     }
 
-    Seed.CrashHandler handler = new Seed.CrashHandler(new MyReceiver.HandlingClass());
+    Seed.CrashHandler handler = new Seed.CrashHandler(new MyReceiver.HandlingClass(), context);
     class HandlingClass implements Seed.CrashHandler.CrashHandlingInterface{
 
         @Override
@@ -69,6 +71,7 @@ Context context;
             Log.i("JOSHCRASH", "SUCCESSFULLY CAUGHT BROTHA");
             SharedPreferences.Editor editor = context.getSharedPreferences("AUTO_PREF", Context.MODE_PRIVATE).edit();
             editor.putString("message","");
+            editor.putString("break_thru_mode_on_off", "off");
             editor.putString("auto_reply_mode_on_off", "off");
             editor.apply();
         }

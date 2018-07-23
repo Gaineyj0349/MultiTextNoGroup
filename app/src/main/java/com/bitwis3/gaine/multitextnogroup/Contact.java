@@ -4,11 +4,13 @@ import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 
+import java.io.Serializable;
+
 /**
  * Created by gaine on 11/25/2017.
  */
 @Entity(tableName = "_table_one_multi")
-public class Contact {
+public class Contact implements Serializable{
 
     public Contact(String name, String number, int type) {
         this.name = name;
@@ -135,5 +137,38 @@ public class Contact {
 
     public void setTypeEntry(String typeEntry) {
         this.typeEntry = typeEntry;
+    }
+
+
+    public String getAllInfo(){
+        StringBuilder builder = new StringBuilder();
+        builder.append("\n\n");
+        builder.append("id " + getId());
+        builder.append("\n\n");
+        builder.append("name " +getName());
+        builder.append("\n\n");
+        builder.append("group " +getGroup());
+        builder.append("\n\n");
+        builder.append("message " +getMessage());
+        builder.append("\n\n");
+        builder.append("code1 " +getCode1());
+        builder.append("\n\n");
+        builder.append("timeinmillis " +getTimeInMillis());
+        builder.append("\n\n");
+        builder.append("type_entry " +getTypeEntry());
+        builder.append("\n\n");
+        builder.append("type " +getType());
+        builder.append("\n\n");
+
+        return builder.toString();
+    }
+
+
+    public boolean isSatisfied(){
+        if(getName().length()>0 && group.length()>0 && getMessage().length() > 0){
+            return true;
+        }else{
+            return false;
+        }
     }
 }

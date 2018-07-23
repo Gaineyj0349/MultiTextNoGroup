@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".EditEmergency"
+    tools:showIn="@layout/activity_edit_emergency">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <com.bitwis3.gaine.multitextnogroup.CustomTextView
+        android:id="@+id/customTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/edittv1"
+        android:textSize="25sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editet1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:hint="label here"
+        android:maxLength="25"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/customTextView" />
+
+        <View
+            android:id="@+id/view1edit"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/oldp"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+        <Button
+            android:paddingRight="@dimen/fab_margin"
+            android:paddingEnd="@dimen/fab_margin"
+            android:id="@+id/button2"
+            style="@style/Widget.AppCompat.Button.ButtonBar.AlertDialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:onClick="deleteAll"
+            android:text="Delete All"
+            android:textStyle="italic"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:paddingRight="@dimen/fab_margin"
+            android:paddingEnd="@dimen/fab_margin"
+            android:id="@+id/button"
+            style="@style/Widget.AppCompat.Button.ButtonBar.AlertDialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:onClick="createNew"
+            android:text="Create New"
+            android:textStyle="italic"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view1edit" />
+    <com.bitwis3.gaine.multitextnogroup.CustomTextView
+
+        android:id="@+id/customTextView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/edittv2"
+        android:textSize="25sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view1edit" />
+
+    <Spinner
+        android:minHeight="40dp"
+        android:paddingBottom="20dp"
+        android:paddingTop="6dp"
+        android:id="@+id/editspinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:minWidth="150dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/customTextView3" />
+
+    <View
+        android:id="@+id/view2edit"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/oldp"
+        app:layout_constraintTop_toBottomOf="@+id/editspinner" />
+
+    <com.bitwis3.gaine.multitextnogroup.CustomTextView
+        android:paddingTop="@dimen/fab_margin"
+        android:id="@+id/customTextView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="@string/edittv3"
+        android:textSize="25sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view4edit" />
+
+    <Switch
+
+        android:id="@+id/editswitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:paddingBottom="@dimen/fab_margin"
+        android:paddingTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/view2edit" />
+
+    <View
+        android:id="@+id/view3edit"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/oldp"
+        app:layout_constraintTop_toBottomOf="@+id/editiv" />
+
+    <Button
+        android:id="@+id/editiv"
+        style="@style/Widget.AppCompat.Button.ButtonBar.AlertDialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="What is this?"
+        android:textStyle="italic"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/customTextView2" />
+
+    <View
+        android:id="@+id/view4edit"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/oldp"
+        app:layout_constraintTop_toBottomOf="@+id/editiv" />
+    <com.bitwis3.gaine.multitextnogroup.CustomTextView
+        android:id="@+id/customTextView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="@string/edittv4"
+        android:textSize="25sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view2edit" />
+        <com.bitwis3.gaine.multitextnogroup.CustomTextView
+            android:id="@+id/customTextView9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@string/edittv5"
+            android:textSize="25sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editet1" />
+
+        <EditText
+        android:minLines="10"
+        android:id="@+id/editet2"
+        android:layout_width="match_parent"
+        android:layout_height="289dp"
+        android:layout_marginStart="8dp"
+        android:gravity="top"
+        android:hint="message body here"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/customTextView4" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/customTextView9">
+
+            <LinearLayout
+                android:onClick="imageSelected"
+                android:id="@+id/imagell1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:padding="4dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fitsSystemWindows="true"
+                    android:src="@drawable/sms1" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:onClick="imageSelected"
+                android:id="@+id/imagell2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:padding="4dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fitsSystemWindows="true"
+                    android:src="@drawable/sms2" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:onClick="imageSelected"
+                android:id="@+id/imagell3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:padding="4dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fitsSystemWindows="true"
+                    android:src="@drawable/sms3" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:onClick="imageSelected"
+                android:id="@+id/imagell4"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:padding="4dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fitsSystemWindows="true"
+                    android:src="@drawable/sms4" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:onClick="imageSelected"
+                android:id="@+id/imagell5"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:padding="4dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fitsSystemWindows="true"
+                    android:src="@drawable/sms5" />
+            </LinearLayout>
+        </LinearLayout>
+    </android.support.constraint.ConstraintLayout>
+
+
+    </ScrollView>
+</android.support.constraint.ConstraintLayout>

@@ -2,13 +2,19 @@ package com.bitwis3.gaine.multitextnogroup;
 
 import android.Manifest;
 import android.app.AlertDialog;
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.arch.persistence.room.Room;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -16,9 +22,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.telephony.SmsManager;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.RemoteViews;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -34,7 +42,7 @@ public class Main2Activity extends AppCompatActivity {
     String etMessage = "";
     DBRoom db;
     EditText editText;
-
+Handler handler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +62,7 @@ public class Main2Activity extends AppCompatActivity {
             getSupportActionBar().setBackgroundDrawable(getResources().getDrawable(R.drawable.gradient2));        }
 
 
-
+        handler = new Handler();
         editText = (EditText)findViewById(R.id.editText);
         numbersToSend = getIntent().getStringArrayListExtra("array");
         namesToSend = getIntent().getStringArrayListExtra("names");
@@ -141,53 +149,23 @@ public class Main2Activity extends AppCompatActivity {
         }
     }
 
-    public void sendTheMessage(ArrayList<String> numbers, String message) {
-        try{
-        ArrayList<String> AL = numbers;
-        int size = AL.size();
-        SmsManager smsManager = SmsManager.getDefault();
-        for (int i = 0; i < size; i++) {
-            Log.i("JOSHd", numbers.get(i) + " " + message);
-
-    if(message.length() > 155){
-        ArrayList<String> parts = smsManager.divideMessage(message);
-        smsManager.sendMultipartTextMessage(numbers.get(i), null,
-                parts, null, null);
-    }else{
-        smsManager.sendTextMessage(numbers.get(i), null,
-                message, null, null);
-    }
-
-            Contact contact = new Contact();
-            contact.setName(namesToSend.get(i));
-            contact.setNumber(numbersToSend.get(i));
-            contact.setTypeEntry("multi_text");
-            contact.setMessage(message);
-            contact.setTimeInMillis(System.currentTimeMillis());
-            db.multiDOA().insertAll(contact);
-
-        }
-        FabToast.makeText(Main2Activity.this , "Success, you can view your sent messages in your Logs, under the History tab.",
-                Toast.LENGTH_LONG, FabToast.SUCCESS, FabToast.POSITION_DEFAULT).show();
-
-        Bungee.slideRight(this);
-        Main2Activity.this.finish();
-
-        }catch (Exception e){
-            FabToast.makeText(this, "We do apologize, but your device is not supported currently.", Toast.LENGTH_LONG, FabToast.ERROR, FabToast.POSITION_DEFAULT).show();
-
-        }
-    }
 //    public void sendTheMessage(ArrayList<String> numbers, String message) {
+//        try{
 //        ArrayList<String> AL = numbers;
 //        int size = AL.size();
 //        SmsManager smsManager = SmsManager.getDefault();
 //        for (int i = 0; i < size; i++) {
 //            Log.i("JOSHd", numbers.get(i) + " " + message);
 //
+//    if(message.length() > 155){
+//        ArrayList<String> parts = smsManager.divideMessage(message);
+//        smsManager.sendMultipartTextMessage(numbers.get(i), null,
+//                parts, null, null);
+//    }else{
+//        smsManager.sendTextMessage(numbers.get(i), null,
+//                message, null, null);
+//    }
 //
-//            smsManager.sendTextMessage(numbers.get(i), null,
-//                    message, null, null);
 //            Contact contact = new Contact();
 //            contact.setName(namesToSend.get(i));
 //            contact.setNumber(numbersToSend.get(i));
@@ -197,10 +175,100 @@ public class Main2Activity extends AppCompatActivity {
 //            db.multiDOA().insertAll(contact);
 //
 //        }
-//        Toast.makeText(this, "SUCCESS, each message has been sent", Toast.LENGTH_SHORT).show();
-//        startActivity(new Intent(Main2Activity.this, Home.class));
+//        FabToast.makeText(Main2Activity.this , "Success, you can view your sent messages in your Logs, under the History tab.",
+//                Toast.LENGTH_LONG, FabToast.SUCCESS, FabToast.POSITION_DEFAULT).show();
+//
 //        Bungee.slideRight(this);
+//        Main2Activity.this.finish();
+//
+//        }catch (Exception e){
+//            FabToast.makeText(this, "We do apologize, but your device is not supported currently.", Toast.LENGTH_LONG, FabToast.ERROR, FabToast.POSITION_DEFAULT).show();
+//
+//        }
 //    }
+private void sendMessage(final int i, final SmsManager smsManager, final ArrayList<String> numbers,
+                         final String message){
+
+    handler.postDelayed(new Runnable() {
+        @Override
+        public void run() {
+
+            Log.i("JOSHnew", numbers.get(i) + " " + message);
+
+            if(numbers.get(i) != null) {
+                if(message.length() > 155){
+                    ArrayList<String> parts = smsManager.divideMessage(message);
+                    smsManager.sendMultipartTextMessage(numbers.get(i), null,
+                            parts, null, null);
+                }else{
+                    smsManager.sendTextMessage(numbers.get(i), null,
+                            message, null, null);
+                }
+            }
+
+            Contact contact = new Contact();
+            contact.setName(namesToSend.get(i));
+            contact.setNumber(numbersToSend.get(i));
+            if(Seed.isTelephonyMobileConnected(Main2Activity.this)){
+                contact.setTypeEntry("multi_text");
+            }else{
+                contact.setTypeEntry("missed");}
+            contact.setMessage(message);
+            contact.setTimeInMillis(System.currentTimeMillis());
+            db.multiDOA().insertAll(contact);
+
+            if(i<numbers.size()-1){
+                sendMessage(i+1,smsManager,numbers,message);
+            }else{
+                return;
+            }
+
+        }
+    },100);
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public void sendTheMessage(ArrayList<String> numbers, String message) {
+
+        try{
+            ArrayList<String> AL = numbers;
+            int size = AL.size();
+            SmsManager smsManager = SmsManager.getDefault();
+
+            boolean ready = false;
+            if(Seed.isTelephonyMobileConnected(this)){
+                ready = true;
+            }
+
+            sendMessage(0,smsManager,numbers,message);
+
+            if(ready){
+                FabToast.makeText(Main2Activity.this , "Success, you can view your sent messages in your Logs, under the History tab.",
+                        Toast.LENGTH_LONG, FabToast.SUCCESS, FabToast.POSITION_DEFAULT).show();
+
+            }else{
+                showNotificationForOld();}
+
+            Bungee.slideRight(this);
+            Main2Activity.this.finish();
+
+        }catch (Exception e){
+            FabToast.makeText(this, "We do apologize, but your device is not supported currently.", Toast.LENGTH_LONG, FabToast.ERROR, FabToast.POSITION_DEFAULT).show();
+
+        }
+    }
 
 
 
@@ -283,6 +351,13 @@ public class Main2Activity extends AppCompatActivity {
         }
         return builders.toString();
     }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_emergency, menu);
+        return true;
+    }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -291,9 +366,16 @@ public class Main2Activity extends AppCompatActivity {
             case android.R.id.home:
 
                 Bungee.slideRight(this);
-                Main2Activity.this.finish();
+                this.finish();
 
                 return true;
+
+
+            case R.id.emergencytoolbar:
+                startActivity(new Intent(this, Emergency.class));
+                this.finish();
+                return true;
+
         }
         return super.onOptionsItemSelected(item);
     }
@@ -310,6 +392,71 @@ public class Main2Activity extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         Main2Activity.this.finish();
+    }
+
+    private void showNotificationForOld() {
+        RemoteViews contentView = new RemoteViews("com.bitwis3.gaine.multitextnogroup", R.layout.custom_notification);
+        contentView.setImageViewResource(R.id.image, R.mipmap.icon);
+        contentView.setTextViewText(R.id.notificationtext, "Your Scheduled Message(s) were not sent! Click to handle.");
+
+        Notification.Builder builder =
+                new Notification.Builder(this);
+
+        builder.setSmallIcon
+                (R.drawable.ic_message_black_24dp);
+        Intent intent2 =
+                new Intent(this, ActivityLog.class);
+
+        intent2.putExtra("missed", "missed");
+
+        int latestCode = db.multiDOA().getLatestCode()+1000000;
+        Log.i("JOSHser", String.valueOf(latestCode));
+        PendingIntent pendingIntent;
+        if(latestCode >=  0){
+
+            pendingIntent =
+                    PendingIntent.getActivity(this, db.multiDOA().getLatestCode()+1000000
+                            , intent2, 0);
+        }else{
+            pendingIntent =
+                    PendingIntent.getActivity(this, 1
+                            , intent2, 0);
+        }
+        intent2.putExtra("code", latestCode);
+
+        builder.setContentIntent(pendingIntent);
+        builder.setContent(contentView);
+        builder.setContentTitle("Your Scheduled Messages were not sent! Click to handle.");
+        builder.setAutoCancel(true);
+        builder.setPriority(Notification.PRIORITY_LOW);
+        builder.setDefaults(Notification.DEFAULT_VIBRATE);
+
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            // Create the NotificationChannel
+            CharSequence name = "default use";
+            String description = "get reminders from this app";
+            int importance = NotificationManager.IMPORTANCE_LOW;
+
+            NotificationChannel mChannel = new NotificationChannel("ChannelID", name, importance);
+            mChannel.setDescription(description);
+            mChannel.setSound(null, null);
+            // Register the channel with the system; you can't change the importance
+            // or other notification behaviors after this
+            NotificationManager notificationManager = (NotificationManager) this.getSystemService(
+                    NOTIFICATION_SERVICE);
+            notificationManager.createNotificationChannel(mChannel);
+            builder.setChannelId("ChannelID");
+        }
+
+        Notification notification = builder.build();
+
+
+        NotificationManager notificationMgr = (NotificationManager)
+                this.getSystemService(NOTIFICATION_SERVICE);
+
+
+        notificationMgr.notify(latestCode, notification);
     }
 
 }

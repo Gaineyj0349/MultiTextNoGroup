@@ -90,22 +90,27 @@ public class LogAdapter extends RecyclerView.Adapter<LogAdapter.ViewHolder> {
                     @Override
                     public void onClick(View v) {
                         try {
+                            if(Seed.isTelephonyMobileConnected(context)) {
 
 
-                            if (records.get(position).getMessage().length() > 155) {
-                                ArrayList<String> parts = smsManager.divideMessage(records.get(position).getMessage());
-                                smsManager.sendMultipartTextMessage(records.get(position).getNumber(), null,
-                                        parts, null, null);
-                            } else {
-                                smsManager.sendTextMessage(records.get(position).getNumber(), null,
-                                        records.get(position).getMessage(), null, null);
+                                if (records.get(position).getMessage().length() > 155) {
+                                    ArrayList<String> parts = smsManager.divideMessage(records.get(position).getMessage());
+                                    smsManager.sendMultipartTextMessage(records.get(position).getNumber(), null,
+                                            parts, null, null);
+                                } else {
+                                    smsManager.sendTextMessage(records.get(position).getNumber(), null,
+                                            records.get(position).getMessage(), null, null);
+                                }
+                                db.multiDOA().updateTypeEntryWithID(records.get(position).getId(), "notmissed");
+                                db.multiDOA().updateDateWithID(records.get(position).getId(), records.get(position).getTimeInMillis());
+                                records.remove(position);
+                                notifyDataSetChanged();
+                                FabToast.makeText(context, "SENT!", Toast.LENGTH_SHORT, FabToast.SUCCESS, FabToast.POSITION_DEFAULT).show();
+                            }else{
+                                FabToast.makeText(context, "Unable to send, Check your connection..", Toast.LENGTH_SHORT, FabToast.ERROR, FabToast.POSITION_DEFAULT).show();
+
                             }
-                            db.multiDOA().updateTypeEntryWithID(records.get(position).getId(), "timed_text_sent");
-                            db.multiDOA().updateDateWithID(records.get(position).getId(), records.get(position).getTimeInMillis());
-                            records.remove(position);
-                            notifyDataSetChanged();
-                            FabToast.makeText(context, "SENT!", Toast.LENGTH_SHORT, FabToast.SUCCESS, FabToast.POSITION_DEFAULT).show();
-                        }catch (Exception e){
+                            }catch (Exception e){
                             FabToast.makeText(context, "We do apologize, but your device is not supported currently.", Toast.LENGTH_LONG, FabToast.ERROR, FabToast.POSITION_DEFAULT).show();
 
                         }
@@ -135,6 +140,15 @@ public class LogAdapter extends RecyclerView.Adapter<LogAdapter.ViewHolder> {
                 break;
             case "timed_text_sent":
                 holder.bg.setBackground(context.getResources().getDrawable(R.drawable.gradient3));
+                break;
+            case "missed":
+                holder.bg.setBackground(context.getResources().getDrawable(R.drawable.gradient6));
+                break;
+            case "notmissed":
+                holder.bg.setBackground(context.getResources().getDrawable(R.drawable.gradient7));
+                break;
+            case "EMERGENCY_TEXT_SENT":
+                holder.bg.setBackground(context.getResources().getDrawable(R.drawable.gradient8));
                 break;
             default:
         }
@@ -244,6 +258,15 @@ public class LogAdapter extends RecyclerView.Adapter<LogAdapter.ViewHolder> {
                 break;
             case "timed_text_sent":
                 s = "Message Sent On A Scheduled Time:";
+                break;
+            case "missed":
+                s = "This message did not send, connection issue?";
+                break;
+            case "notmissed":
+                s = "This message was sent";
+                break;
+            case "EMERGENCY_TEXT_SENT":
+                s = "Preset Text Sent";
                 break;
                 default:
                     s = "";

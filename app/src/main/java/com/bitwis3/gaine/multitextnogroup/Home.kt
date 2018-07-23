@@ -51,7 +51,8 @@ class Home : AppCompatActivity() {
     lateinit var shimmerText3: ShimmerLayout
     lateinit var shimmerText5: ShimmerLayout
     lateinit var shimmerText4: ShimmerLayout
-
+    lateinit var shimmerText6: ShimmerLayout
+    var context = Home@this
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -89,12 +90,21 @@ class Home : AppCompatActivity() {
             Task.RateApp(this, "com.gainwise.transactional")
             return true
         }
+        if (id == R.id.EMERGENCY) {
+            Task.RateApp(this, "com.gainwise.transactional")
+            return true
+        }
         if (id == R.id.buyPro) {
-            Task.RateApp(this, "com.bitwis3.gaine.multitextnogroup")
+            Task.RateApp(this, "com.bitwis3.gaine.multitextnogroupPRO")
             return true
         }
         if (id == R.id.test2) {
             startActivity(Intent(this, Credits::class.java))
+            Bungee.card(this)
+            return true
+        }
+        if (id == R.id.importexport) {
+            startActivity(Intent(this, ImportExport::class.java))
             Bungee.card(this)
             return true
         }
@@ -105,6 +115,10 @@ class Home : AppCompatActivity() {
 
             return true
         }
+//        if (id == R.id.mobile) {
+//            Toast.makeText(Home@this, "- " + Seed.isMobileAvailable(Home@this), Toast.LENGTH_SHORT).show()
+//            return true
+//        }
 
         if (id == R.id.action_settings) {
             startActivity(Intent(this, SettingsActivity::class.java))
@@ -127,7 +141,7 @@ class Home : AppCompatActivity() {
 
     private fun checkForConsent() {
         val consentInformation = ConsentInformation.getInstance(this@Home)
-//
+
 //        ConsentInformation.getInstance(this@Home).addTestDevice("E8F9908FCA6E01002BCD08F42B00E801")
 //        ConsentInformation.getInstance(this@Home).debugGeography = DebugGeography.DEBUG_GEOGRAPHY_EEA
         val publisherIds = arrayOf("pub-6280186717837639")
@@ -198,7 +212,7 @@ class Home : AppCompatActivity() {
                         startAnims()
                         Log.d("JOSHad", "Requesting Consent: onConsentFormClosed")
                         if (userPrefersAdFree!!) {
-                            // Buy or Subscribe
+                            Task.RateApp(context, "com.bitwis3.gaine.multitextnogroupPRO")
                             Log.d("JOSHad", "Requesting Consent: User prefers AdFree")
                         } else {
                             Log.d("JOSHad", "Requesting Consent: Requesting consent again")
@@ -325,6 +339,7 @@ class Home : AppCompatActivity() {
             R.id.card3info ->{initNewBuilder(resources.getString(R.string.card3info))}
             R.id.card4info ->{initNewBuilder(resources.getString(R.string.card4info))}
             R.id.card5info ->{initNewBuilder(resources.getString(R.string.card5info))}
+            R.id.card6info ->{initNewBuilder(resources.getString(R.string.card6info))}
         }
     }
 
@@ -358,11 +373,12 @@ class Home : AppCompatActivity() {
     }
 
     fun showInfos(){
-       card1info.visibility = View.VISIBLE
+        card1info.visibility = View.VISIBLE
         card2info.visibility = View.VISIBLE
         card3info.visibility = View.VISIBLE
         card4info.visibility = View.VISIBLE
         card5info.visibility = View.VISIBLE
+        card6info.visibility = View.VISIBLE
     }
     fun hideInfos(){
         card1info.visibility = View.GONE
@@ -370,6 +386,7 @@ class Home : AppCompatActivity() {
         card3info.visibility = View.GONE
         card4info.visibility = View.GONE
         card5info.visibility = View.GONE
+        card6info.visibility = View.GONE
     }
 
 fun goToGroupManage(v: View){
@@ -402,6 +419,7 @@ fun initTheAnims(){
     shimmerText1 = findViewById(R.id.shimmer_text_card1) as ShimmerLayout
     shimmerText3 = findViewById(R.id.shimmer_text_card3) as ShimmerLayout
     shimmerText4 = findViewById(R.id.shimmer_text_card4) as ShimmerLayout
+    shimmerText6 = findViewById(R.id.shimmer_text_card6) as ShimmerLayout
 
 
     }
@@ -414,6 +432,7 @@ fun initTheAnims(){
         shimmerText1.startShimmerAnimation()
         shimmerText3.startShimmerAnimation()
         shimmerText4.startShimmerAnimation()
+        shimmerText6.startShimmerAnimation()
     }
 
     fun stopAnims(){
@@ -422,6 +441,7 @@ fun initTheAnims(){
         shimmerText1.stopShimmerAnimation()
         shimmerText3.stopShimmerAnimation()
         shimmerText4.stopShimmerAnimation()
+        shimmerText6.stopShimmerAnimation()
     }
 
 
@@ -431,6 +451,11 @@ fun goToTimedText(v: View){
     startActivity(intent)
     Bungee.slideLeft(this)
 }
+    fun goToEmergency(v: View){
+        val intent = Intent(this@Home, Emergency::class.java)
+        startActivity(intent)
+        Bungee.slideLeft(this)
+    }
 
     fun goToAuto(v: View){
         val intent = Intent(this@Home, AutoAct::class.java)
@@ -479,7 +504,7 @@ fun goToTimedText(v: View){
         var llnever = view.findViewById<LinearLayout>(R.id.llnever);
         var lllater = view.findViewById<LinearLayout>(R.id.lllater);
 
-        llbuy.setOnClickListener({Task.RateApp(Home@this, "com.bitwis3.gaine.multitextnogroup")})
+        llbuy.setOnClickListener({Task.RateApp(Home@this, "com.bitwis3.gaine.multitextnogroupPRO")})
         llrate.setOnClickListener({Task.RateApp(Home@this, "com.bitwis3.gaine.multitextnogroup")
             val editor = getSharedPreferences("AUTO_PREF", MODE_PRIVATE).edit()
             editor.putBoolean("showRateDialog", false)
