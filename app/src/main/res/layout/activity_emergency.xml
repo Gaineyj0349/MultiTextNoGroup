@@ -71,7 +71,7 @@
                 android:layout_weight="1"
                 android:gravity="center">
 
-                <ImageView
+                <android.support.v7.widget.AppCompatImageView
                     android:src="@drawable/ic_settings_black_24dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
@@ -160,7 +160,7 @@
                     android:layout_weight="1"
                     android:gravity="center">
 
-                    <ImageView
+                    <android.support.v7.widget.AppCompatImageView
                         android:src="@drawable/ic_settings_black_24dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
@@ -251,7 +251,7 @@
                     android:layout_weight="1"
                     android:gravity="center">
 
-                    <ImageView
+                    <android.support.v7.widget.AppCompatImageView
                         android:layout_gravity="center"
                         android:src="@drawable/ic_settings_black_24dp"
                         android:layout_width="match_parent"
@@ -298,18 +298,18 @@
 
 
     </android.support.v7.widget.CardView>
-    <com.bitwis3.gaine.multitextnogroup.CustomTextView
-        android:onClick="permlatlong"
-        android:id="@+id/locationView"
-        android:layout_alignParentBottom="true"
-        android:textAlignment="center"
-        android:fontFamily="casual"
-        android:textStyle="italic|bold"
-        android:background="@color/blue"
-        android:text="Location will appear here\n click to enable.."
-        android:textColor="#ffffff"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+    <!--<com.bitwis3.gaine.multitextnogroup.CustomTextView-->
+        <!--android:onClick="permlatlong"-->
+        <!--android:id="@+id/locationView"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:textAlignment="center"-->
+        <!--android:fontFamily="casual"-->
+        <!--android:textStyle="italic|bold"-->
+        <!--android:background="@color/blue"-->
+        <!--android:text="Location will appear here\n click to enable.."-->
+        <!--android:textColor="#ffffff"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content" />-->
 
     </LinearLayout>
 

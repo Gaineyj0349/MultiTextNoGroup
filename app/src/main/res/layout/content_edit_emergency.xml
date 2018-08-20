@@ -204,7 +204,7 @@
                 android:orientation="vertical"
                 android:padding="4dp">
 
-                <ImageView
+                <android.support.v7.widget.AppCompatImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:fitsSystemWindows="true"
@@ -220,7 +220,7 @@
                 android:orientation="vertical"
                 android:padding="4dp">
 
-                <ImageView
+                <android.support.v7.widget.AppCompatImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:fitsSystemWindows="true"
@@ -236,7 +236,7 @@
                 android:orientation="vertical"
                 android:padding="4dp">
 
-                <ImageView
+                <android.support.v7.widget.AppCompatImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:fitsSystemWindows="true"
@@ -252,7 +252,7 @@
                 android:orientation="vertical"
                 android:padding="4dp">
 
-                <ImageView
+                <android.support.v7.widget.AppCompatImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:fitsSystemWindows="true"
@@ -268,7 +268,7 @@
                 android:orientation="vertical"
                 android:padding="4dp">
 
-                <ImageView
+                <android.support.v7.widget.AppCompatImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:fitsSystemWindows="true"

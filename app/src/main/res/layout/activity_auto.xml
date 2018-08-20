@@ -32,6 +32,7 @@
         <EditText
             android:id="@+id/autoET"
             android:gravity="top"
+            android:inputType="textCapSentences"
             android:hint="Type your reply message here."
             android:layout_width="match_parent"
             android:layout_height="match_parent" />

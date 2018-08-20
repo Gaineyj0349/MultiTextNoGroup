@@ -148,7 +148,7 @@ public class LogAdapter extends RecyclerView.Adapter<LogAdapter.ViewHolder> {
                 holder.bg.setBackground(context.getResources().getDrawable(R.drawable.gradient7));
                 break;
             case "EMERGENCY_TEXT_SENT":
-                holder.bg.setBackground(context.getResources().getDrawable(R.drawable.gradient8));
+                holder.bg.setBackground(context.getResources().getDrawable(R.drawable.gradient5));
                 break;
             default:
         }

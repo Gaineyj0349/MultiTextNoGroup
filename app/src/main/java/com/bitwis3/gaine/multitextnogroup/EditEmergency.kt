@@ -1,6 +1,5 @@
 package com.bitwis3.gaine.multitextnogroup
 
-import android.app.Activity
 import android.arch.persistence.room.Room
 import android.content.Context
 import android.content.DialogInterface
@@ -52,10 +51,11 @@ class EditEmergency : AppCompatActivity(){
         supportActionBar?.title = "Preset Text Set-Up"
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         context = this
+        hideNeeded()
         fab.setOnClickListener { view ->
             showDialogForConfirm()
         }
-        helper2 = AllPermissionsHelper(PermissionsHelper2())
+       // helper2 = AllPermissionsHelper(PermissionsHelper2())
         editiv.setOnClickListener{showSheet()}
         db = Room.databaseBuilder(applicationContext,DBRoom::class.java, "_database_multi_master")
                 .fallbackToDestructiveMigration()
@@ -81,7 +81,7 @@ class EditEmergency : AppCompatActivity(){
             selectImage(imageNum)
         }
 
-        editswitch.setOnClickListener{ helper2.requestPermissions()}
+     //   editswitch.setOnClickListener{ helper2.requestPermissions()}
     }
 
 
@@ -150,9 +150,9 @@ class EditEmergency : AppCompatActivity(){
         }
     }
 
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
-        helper2.handleResult(requestCode, permissions, grantResults)
-    }
+//    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
+//        helper2.handleResult(requestCode, permissions, grantResults)
+//    }
 
     private fun showDialogForConfirm() {
         val group = editspinner.selectedItem.toString()
@@ -235,26 +235,26 @@ class EditEmergency : AppCompatActivity(){
 
     }
 
-
-
-    inner class PermissionsHelper2 : PermissionsDirective{
-        override fun permissionsToRequest(): Array<String?> {
-            var array =  arrayOfNulls<String>(1)
-            array[0] = "android.permission.ACCESS_FINE_LOCATION"
-            return array
-        }
-        override val requestCode: Int
-            get() = 103
-        override val activity: Activity
-            get() = Outer@ this@EditEmergency
-        override fun executeOnPermissionGranted() {
-
-        }
-        override fun executeOnPermissionDenied() {
-            editswitch.isChecked = false
-            FabToast.makeText(Outer@ this@EditEmergency, "Not available without permission.", Toast.LENGTH_SHORT,
-                    FabToast.WARNING, FabToast.POSITION_DEFAULT).show()}
-    }
+//
+//
+//    inner class PermissionsHelper2 : PermissionsDirective{
+//        override fun permissionsToRequest(): Array<String?> {
+//            var array =  arrayOfNulls<String>(1)
+//            array[0] = "android.permission.ACCESS_FINE_LOCATION"
+//            return array
+//        }
+//        override val requestCode: Int
+//            get() = 103
+//        override val activity: Activity
+//            get() = Outer@ this@EditEmergency
+//        override fun executeOnPermissionGranted() {
+//
+//        }
+//        override fun executeOnPermissionDenied() {
+//            editswitch.isChecked = false
+//            FabToast.makeText(Outer@ this@EditEmergency, "Not available without permission.", Toast.LENGTH_SHORT,
+//                    FabToast.WARNING, FabToast.POSITION_DEFAULT).show()}
+//    }
     fun deleteAll(v: View){
         db.multiDOA().deleteWithId(contact?.id!!)
         FabToast.makeText(this@EditEmergency, "DELETED!", Toast.LENGTH_SHORT,
@@ -292,5 +292,9 @@ class EditEmergency : AppCompatActivity(){
             }
         }
     }
-
+    private fun hideNeeded() {
+        customTextView2.visibility = View.GONE
+        editswitch.visibility = View.GONE
+        editiv.visibility = View.GONE
+    }
 }

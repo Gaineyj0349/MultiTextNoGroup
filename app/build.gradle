@@ -6,7 +6,7 @@ android {
         applicationId "com.bitwis3.gaine.multitextnogroup"
         minSdkVersion 19
         targetSdkVersion 27
-        versionCode 31
+        versionCode 37
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }

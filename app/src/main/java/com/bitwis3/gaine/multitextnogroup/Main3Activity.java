@@ -118,7 +118,7 @@ public class Main3Activity extends AppCompatActivity {
                     };
                     Seed seed = new Seed();
                     AlertDialog.Builder builder = new AlertDialog.Builder(Main3Activity.this);
-                    builder.setMessage("Timed Message will be sent on " + seed.getLocaleDateString(cal.getTimeInMillis()) + " to: " + getStringOfPeople()).setPositiveButton("Yes", dialogClickListener)
+                    builder.setMessage("NOTE - this is using your default texting service, if you are not on an unlimited texting plan, this could incur charges\n\nTimed Message will be sent on " + seed.getLocaleDateString(cal.getTimeInMillis()) + " to: " + getStringOfPeople()).setPositiveButton("Yes", dialogClickListener)
 
                             .setNegativeButton("No", dialogClickListener).show();
 
@@ -233,9 +233,5 @@ public class Main3Activity extends AppCompatActivity {
         Bungee.slideRight(this);
 
     }
-    @Override
-    protected void onStop() {
-        super.onStop();
-        Main3Activity.this.finish();
-    }
+
 }

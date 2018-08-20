@@ -25,8 +25,6 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.EditText
 import android.widget.RemoteViews
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 import kotlinx.android.synthetic.main.activity_emergency.*
 import spencerstudios.com.bungeelib.Bungee
 import spencerstudios.com.fab_toast.FabToast
@@ -67,7 +65,7 @@ class Emergency : AppCompatActivity() {
             supportActionBar?.setDisplayHomeAsUpEnabled(true)
         }
         change = rapidOn()
-        supportActionBar?.setBackgroundDrawable(resources.getDrawable(R.drawable.gradient8))
+        supportActionBar?.setBackgroundDrawable(resources.getDrawable(R.drawable.gradient5))
         supportActionBar?.title = "PRESET TEXTING"
         smsManager = SmsManager.getDefault()
 
@@ -372,29 +370,29 @@ class Emergency : AppCompatActivity() {
     private fun sendMessagesWith(message: String?, code1: Int, listIn: List<Contact>, defaultInfo: Contact) {
 
         var b = StringBuilder()
-        try {
-
-            if(code1 == 1) {
-                //TODO start service
-                val gson = Gson()
-                val typeOfSource = object : TypeToken<List<Contact>>() {
-                }.type
-                val jsonContacts = gson.toJson(listIn, typeOfSource)
-                val i = Intent(this@Emergency, MyServiceToSendLocation::class.java)
-                i.putExtra("message", message)
-                i.putExtra("code1", code1)
-                i.putExtra("listIn", jsonContacts)
-                i.putExtra("defaultInfo", defaultInfo)
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                    startForegroundService(i)
-                } else {
-                    startService(i)
-                }
-                b.append("A text will follow shortly with location\n\n")
-            }
-        }catch(e: Exception){
-
-        }
+//        try {
+//
+//            if(code1 == 1) {
+//                //TODO start service
+//                val gson = Gson()
+//                val typeOfSource = object : TypeToken<List<Contact>>() {
+//                }.type
+//                val jsonContacts = gson.toJson(listIn, typeOfSource)
+//                val i = Intent(this@Emergency, MyServiceToSendLocation::class.java)
+//                i.putExtra("message", message)
+//                i.putExtra("code1", code1)
+//                i.putExtra("listIn", jsonContacts)
+//                i.putExtra("defaultInfo", defaultInfo)
+//                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+//                    startForegroundService(i)
+//                } else {
+//                    startService(i)
+//                }
+//                b.append("A text will follow shortly with location\n\n")
+//            }
+//        }catch(e: Exception){
+//
+//        }
         b.append(message)
 
         val stringToSend = b.toString()
@@ -446,9 +444,9 @@ class Emergency : AppCompatActivity() {
 
     }
 
-    fun permlatlong(v: View){
-        helper.requestPermissions()
-    }
+//    fun permlatlong(v: View){
+//        helper.requestPermissions()
+//    }
 
     private fun sendMessage(message: String, i: Int, listIn: List<Contact>, defaultInfo: Contact) {
         var con = Contact()

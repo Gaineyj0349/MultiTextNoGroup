@@ -27,7 +27,7 @@ class ActivityLog : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_log)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.setBackgroundDrawable(resources.getDrawable(R.drawable.gradient5))
+        supportActionBar?.setBackgroundDrawable(resources.getDrawable(R.drawable.gradient8))
         val layoutManager =  LinearLayoutManager(this);
         rvlog.layoutManager = layoutManager
         val dividerItemDecoration = DividerItemDecoration(rvlog.getContext(),

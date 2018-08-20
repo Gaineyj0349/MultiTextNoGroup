@@ -13,7 +13,7 @@
        android:layout_alignParentTop="true"
         android:id="@+id/editText"
         android:hint="Type Message Here"
-        android:inputType="textMultiLine"
+        android:inputType="textCapSentences"
         android:selectAllOnFocus="false"
 
         android:paddingStart="8dp"

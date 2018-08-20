@@ -5,8 +5,7 @@
     <item android:id="@+id/information"
         android:title="INFO"
         android:orderInCategory="100"
-        android:icon="@drawable/ic_info_outline_white_24dp"
-        app:showAsAction="always" />
+        app:showAsAction="never" />
     <item android:id="@+id/action_settings2"
         android:title="Settings"
         android:orderInCategory="100"

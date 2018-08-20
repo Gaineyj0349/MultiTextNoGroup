@@ -22,7 +22,7 @@
     </LinearLayout>
 
 
-    <ImageView
+    <android.support.v7.widget.AppCompatImageView
         android:layout_alignParentEnd="true"
         android:src="@drawable/ic_cancel_black_24dp"
         android:id="@+id/removeiv"

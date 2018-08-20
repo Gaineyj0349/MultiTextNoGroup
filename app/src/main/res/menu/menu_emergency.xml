@@ -3,8 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.bitwis3.gaine.multitextnogroupPRO.MainActivity" >
     <item android:id="@+id/emergencytoolbar"
-        android:title="EMERGENCY"
+        android:title="Preset Texting"
         android:orderInCategory="100"
-        android:icon="@drawable/ic_announcement_black_24dp"
-        app:showAsAction="always" />
+        app:showAsAction="never" />
 </menu>

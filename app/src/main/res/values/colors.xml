@@ -7,8 +7,8 @@
     <color name="colorCardBG2">#1b5e20</color>
     <color name="colorCardBG3">#607d8b</color>
     <color name="colorCardBG4">#263238</color>
-    <color name="colorCardBG5">#ff9800</color>
-    <color name="colorCardBG6">#e65100</color>
+    <color name="colorCardBG15">#ff9800</color>
+    <color name="colorCardBG16">#e65100</color>
     <color name="colorCardBG7">#9c27b0</color>
     <color name="colorCardBG8">#4a148c</color>
     <color name="colorCardBG9">#009688</color>
@@ -17,8 +17,8 @@
     <color name="colorCardBG12">#bf360c</color>
     <color name="colorCardBG13">#03a9f4</color>
     <color name="colorCardBG14">#01579b</color>
-    <color name="colorCardBG15">#ff5722</color>
-    <color name="colorCardBG16">#bf360c</color>
+    <color name="colorCardBG5">#ff5722</color>
+    <color name="colorCardBG6">#bf360c</color>
     <color name="colorCardBG17">#01579b</color>
     <color name="colorCardBG18">#ff7043</color>
     <color name="red">#f44336</color>

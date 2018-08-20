@@ -57,7 +57,7 @@
                     </io.supercharge.shimmerlayout.ShimmerLayout>
 
 
-                    <ImageView
+                    <android.support.v7.widget.AppCompatImageView
                         android:onClick="infoClicked"
                         android:id="@+id/card2info"
                         android:src="@drawable/ic_info_outline_white_24dp"
@@ -67,7 +67,7 @@
                         android:layout_alignParentLeft="true"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
-                    <ImageView
+                    <android.support.v7.widget.AppCompatImageView
                         android:layout_alignParentEnd="true"
                         android:layout_alignParentRight="true"
                         android:src="@drawable/nextwhite_24dp"
@@ -117,13 +117,13 @@
                         android:layout_height="wrap_content" />
 
                     </io.supercharge.shimmerlayout.ShimmerLayout>
-                    <ImageView
+                    <android.support.v7.widget.AppCompatImageView
                         android:layout_alignParentEnd="true"
                         android:layout_alignParentRight="true"
                         android:src="@drawable/nextwhite_24dp"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent" />
-                    <ImageView
+                    <android.support.v7.widget.AppCompatImageView
                         android:onClick="infoClicked"
                         android:id="@+id/card3info"
                         android:src="@drawable/ic_info_outline_white_24dp"
@@ -178,7 +178,7 @@
 
             </io.supercharge.shimmerlayout.ShimmerLayout>
 
-            <ImageView
+            <android.support.v7.widget.AppCompatImageView
                 android:onClick="infoClicked"
                 android:id="@+id/card1info"
                 android:src="@drawable/ic_info_outline_white_24dp"
@@ -188,7 +188,7 @@
                 android:layout_alignParentLeft="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
-            <ImageView
+            <android.support.v7.widget.AppCompatImageView
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
                 android:src="@drawable/nextwhite_24dp"
@@ -222,7 +222,7 @@
 
 
 
-            <ImageView
+            <android.support.v7.widget.AppCompatImageView
                 android:onClick="infoClicked"
                 android:id="@+id/card5info"
                 android:src="@drawable/ic_info_outline_white_24dp"
@@ -257,7 +257,7 @@
 
             </io.supercharge.shimmerlayout.ShimmerLayout>
 
-            <ImageView
+            <android.support.v7.widget.AppCompatImageView
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
                 android:src="@drawable/nextwhite_24dp"
@@ -284,7 +284,7 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/gradient5">
+                    android:background="@drawable/gradient8">
 
                     <io.supercharge.shimmerlayout.ShimmerLayout
                         android:id="@+id/shimmer_text_card4"
@@ -308,7 +308,7 @@
                         android:layout_height="wrap_content" />
 
                     </io.supercharge.shimmerlayout.ShimmerLayout>
-                    <ImageView
+                    <android.support.v7.widget.AppCompatImageView
                         android:onClick="infoClicked"
                         android:id="@+id/card4info"
                         android:src="@drawable/ic_info_outline_white_24dp"
@@ -318,7 +318,7 @@
                         android:layout_alignParentLeft="true"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
-                    <ImageView
+                    <android.support.v7.widget.AppCompatImageView
                         android:layout_alignParentEnd="true"
                         android:layout_alignParentRight="true"
                         android:src="@drawable/nextwhite_24dp"
@@ -346,7 +346,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/gradient8">
+            android:background="@drawable/gradient5">
 
             <io.supercharge.shimmerlayout.ShimmerLayout
                 android:id="@+id/shimmer_text_card6"
@@ -370,7 +370,7 @@
                     android:layout_height="wrap_content" />
 
             </io.supercharge.shimmerlayout.ShimmerLayout>
-            <ImageView
+            <android.support.v7.widget.AppCompatImageView
                 android:onClick="infoClicked"
                 android:id="@+id/card6info"
                 android:src="@drawable/ic_info_outline_white_24dp"
@@ -380,7 +380,7 @@
                 android:layout_alignParentLeft="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
-            <ImageView
+            <android.support.v7.widget.AppCompatImageView
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
                 android:src="@drawable/nextwhite_24dp"
